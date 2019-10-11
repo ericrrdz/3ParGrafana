@@ -1,6 +1,5 @@
 #!/usr/bin/awk -f 
 # Usage statpd_parse.awk ./statpd.out 
-BEGIN { printf "%s\n","Create datapoints from statpd output"}
 {
 ### TIME STAMP ###
  if(($0 ~ /second/ )&& gsub(/\//," ") && gsub(/:/," ")) {ts=mktime($6" "$4" "$5" "$1" "$2" "$3)}

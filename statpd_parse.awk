@@ -6,20 +6,20 @@
 
 ### SSD150 ###
 # Current io
- if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
 
 # Avg io
- if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
 
 
 # Maximum io
- if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150IO,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
  if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
@@ -61,20 +61,20 @@
 
 ### SSD100 ###
 # Current io
- if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
 
 # Avg io
- if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
 
 
 # Max io
- if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100IO,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
  if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
@@ -116,20 +116,20 @@
 
 ### FC15 ###
 # Current io
- if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
 
 # Avg io
- if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
 
 
 # Max io
- if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15IO,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
  if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
@@ -171,20 +171,20 @@
 
 ### FC10 ###
 # Current io
- if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
 
 # Avg io
- if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
 
 
 # Max io
- if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10IO,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
  if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
@@ -226,20 +226,20 @@
 
 ### NL7 ###
 # Current io
- if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=riocur value="$6" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=wiocur value="$6" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=tiocur value="$6" "ts);t++;}
 
 # Avg io
- if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=rioavg value="$7" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=wioavg value="$7" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=tioavg value="$7" "ts);t++;}
 
 
 # Max io
- if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7IO,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=riomax value="$8" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=wiomax value="$8" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
  if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}

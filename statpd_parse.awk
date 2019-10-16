@@ -22,19 +22,19 @@
  if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
- if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1024" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1000" "ts);t++;}
 
 # Avg Mbps
- if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1024" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1000" "ts);t++;}
 
 # Max Mbps
- if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1024" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="w") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "150") && ($5=="t") && ($6 > 0)) {printf("SSD150Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1000" "ts);t++;}
 
 # Current service times
  if (($3=="SSD") && ($4 == "150") && ($5=="r") && ($6 > 0)) {printf("SSD150Svts,%s,%s\n","PDID="$1,"type=rsvtcur value="$12" "ts);t++;}
@@ -77,19 +77,19 @@
  if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
- if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1024" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1000" "ts);t++;}
 
 # Avg Mbps
- if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1024" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1000" "ts);t++;}
 
 # Max Mbps
- if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1024" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="w") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="SSD") && ($4 == "100") && ($5=="t") && ($6 > 0)) {printf("SSD100Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1000" "ts);t++;}
 
 # Current service times
  if (($3=="SSD") && ($4 == "100") && ($5=="r") && ($6 > 0)) {printf("SSD100Svts,%s,%s\n","PDID="$1,"type=rsvtcur value="$12" "ts);t++;}
@@ -132,19 +132,19 @@
  if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
- if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1024" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1000" "ts);t++;}
 
 # Avg Mbps
- if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1024" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1000" "ts);t++;}
 
 # Max Mbps
- if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1024" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="w") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "15") && ($5=="t") && ($6 > 0)) {printf("FC15Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1000" "ts);t++;}
 
 # Current service times
  if (($3=="FC") && ($4 == "15") && ($5=="r") && ($6 > 0)) {printf("FC15Svts,%s,%s\n","PDID="$1,"type=rsvtcur value="$12" "ts);t++;}
@@ -187,19 +187,19 @@
  if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
- if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1024" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1000" "ts);t++;}
 
 # Avg Mbps
- if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1024" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1000" "ts);t++;}
 
 # Max Mbps
- if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1024" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="w") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="FC") && ($4 == "10") && ($5=="t") && ($6 > 0)) {printf("FC10Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1000" "ts);t++;}
 
 # Current service times
  if (($3=="FC") && ($4 == "10") && ($5=="r") && ($6 > 0)) {printf("FC10Svts,%s,%s\n","PDID="$1,"type=rsvtcur value="$12" "ts);t++;}
@@ -242,19 +242,19 @@
  if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Io,%s,%s\n","PDID="$1,"type=tiomax value="$8" "ts);t++;}
 
 # Current Mbps
- if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1024" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1024" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1024" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=rmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=wmbpscur value="$9/1000" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=tmbpscur value="$9/1000" "ts);t++;}
 
 # Avg Mbps
- if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1024" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1024" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=rmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=wmbpsavg value="$10/1000" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=tmbpsavg value="$10/1000" "ts);t++;}
 
 # Max Mbps
- if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1024" "ts);t++;}
- if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1024" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=rmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="w") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=wmbpsmax value="$11/1000" "ts);t++;}
+ if (($3=="NL") && ($4 == "7") && ($5=="t") && ($6 > 0)) {printf("NL7Mbps,%s,%s\n","PDID="$1,"type=tmbpsmax value="$11/1000" "ts);t++;}
 
 # Current service times
  if (($3=="NL") && ($4 == "7") && ($5=="r") && ($6 > 0)) {printf("NL7Svts,%s,%s\n","PDID="$1,"type=rsvtcur value="$12" "ts);t++;}

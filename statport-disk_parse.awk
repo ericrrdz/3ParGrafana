@@ -21,19 +21,19 @@
  if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="t")) {printf("DskPortIo,%s,%s\n","DiskPort="$1,"type=tiomax value="$6" "ts);t++;}
 
 # Current mbps
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="r")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=rmbpscur value="$7/1024" "ts);t++;}
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="w")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=wmbpscur value="$7/1024" "ts);t++;}
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="t")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=tmbpscur value="$7/1024" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="r")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=rmbpscur value="$7/1000" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="w")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=wmbpscur value="$7/1000" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="t")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=tmbpscur value="$7/1000" "ts);t++;}
 
 # Avg mbps
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="r")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=rmbpsavg value="$8/1024" "ts);t++;}
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="w")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=wmbpsavg value="$8/1024" "ts);t++;}
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="t")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=tmbpsavg value="$8/1024" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="r")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=rmbpsavg value="$8/1000" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="w")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=wmbpsavg value="$8/1000" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="t")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=tmbpsavg value="$8/1000" "ts);t++;}
 
 # Max mbps
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="r")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=rmbpsmax value="$9/1024" "ts);t++;}
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="w")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=wmbpsmax value="$9/1024" "ts);t++;}
- if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="t")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=tmbpsmax value="$9/1024" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="r")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=rmbpsmax value="$9/1000" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="w")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=wmbpsmax value="$9/1000" "ts);t++;}
+ if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="t")) {printf("DskPortMbps,%s,%s\n","DiskPort="$1,"type=tmbpsmax value="$9/1000" "ts);t++;}
 
 # Current service times
  if ((NF==14)&&($2=="Data")&&($4>0)&&($3=="r")) {printf("DskPortSvt,%s,%s\n","DiskPort="$1,"type=rsvtcur value="$10" "ts);t++;}

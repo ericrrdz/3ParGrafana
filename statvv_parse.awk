@@ -21,19 +21,19 @@
  if ((NF==13)&&($2=="t")&&($3>0)) {printf("VvIo,%s,%s\n","Vv="$1,"type=tiomax value="$5" "ts);t++;}
 
 # Current mbps
- if ((NF==13)&&($2=="r")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=rmbpscur value="$6/1024" "ts);t++;}
- if ((NF==13)&&($2=="w")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=wmbpscur value="$6/1024" "ts);t++;}
- if ((NF==13)&&($2=="t")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=tmbpscur value="$6/1024" "ts);t++;}
+ if ((NF==13)&&($2=="r")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=rmbpscur value="$6/1000" "ts);t++;}
+ if ((NF==13)&&($2=="w")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=wmbpscur value="$6/1000" "ts);t++;}
+ if ((NF==13)&&($2=="t")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=tmbpscur value="$6/1000" "ts);t++;}
 
 # Avg mbps
- if ((NF==13)&&($2=="r")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=rmbpsavg value="$7/1024" "ts);t++;}
- if ((NF==13)&&($2=="w")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=wmbpsavg value="$7/1024" "ts);t++;}
- if ((NF==13)&&($2=="t")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=tmbpsavg value="$7/1024" "ts);t++;}
+ if ((NF==13)&&($2=="r")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=rmbpsavg value="$7/1000" "ts);t++;}
+ if ((NF==13)&&($2=="w")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=wmbpsavg value="$7/1000" "ts);t++;}
+ if ((NF==13)&&($2=="t")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=tmbpsavg value="$7/1000" "ts);t++;}
 
 # Max mbps
- if ((NF==13)&&($2=="r")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=rmbpsmax value="$8/1024" "ts);t++;}
- if ((NF==13)&&($2=="w")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=wmbpsmax value="$8/1024" "ts);t++;}
- if ((NF==13)&&($2=="t")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=tmbpsmax value="$8/1024" "ts);t++;}
+ if ((NF==13)&&($2=="r")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=rmbpsmax value="$8/1000" "ts);t++;}
+ if ((NF==13)&&($2=="w")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=wmbpsmax value="$8/1000" "ts);t++;}
+ if ((NF==13)&&($2=="t")&&($3>0)) {printf("VvMbps,%s,%s\n","Vv="$1,"type=tmbpsmax value="$8/1000" "ts);t++;}
 
 # Current service times
  if ((NF==13)&&($2=="r")&&($3>0)) {printf("VvSvt,%s,%s\n","Vv="$1,"type=rsvtcur value="$9" "ts);t++;}

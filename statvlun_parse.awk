@@ -21,19 +21,19 @@
  if (($5=="t")&&($6>0)) {printf("VlunIo,%s,%s\n","VLUN="$2,"type=tiomax value="$8" "ts);t++;}
 
 # Current mbps
- if (($5=="r")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=rmbpscur value="$9/1024" "ts);t++;}
- if (($5=="w")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=wmbpscur value="$9/1024" "ts);t++;}
- if (($5=="t")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=tmbpscur value="$9/1024" "ts);t++;}
+ if (($5=="r")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=rmbpscur value="$9/1000" "ts);t++;}
+ if (($5=="w")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=wmbpscur value="$9/1000" "ts);t++;}
+ if (($5=="t")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=tmbpscur value="$9/1000" "ts);t++;}
 
 # Avg mbps
- if (($5=="r")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=rmbpsavg value="$10/1024" "ts);t++;}
- if (($5=="w")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=wmbpsavg value="$10/1024" "ts);t++;}
- if (($5=="t")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=tmbpsavg value="$10/1024" "ts);t++;}
+ if (($5=="r")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=rmbpsavg value="$10/1000" "ts);t++;}
+ if (($5=="w")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=wmbpsavg value="$10/1000" "ts);t++;}
+ if (($5=="t")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=tmbpsavg value="$10/1000" "ts);t++;}
 
 # Max mbps
- if (($5=="r")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=rmbpsmax value="$11/1024" "ts);t++;}
- if (($5=="w")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=wmbpsmax value="$11/1024" "ts);t++;}
- if (($5=="t")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=tmbpsmax value="$11/1024" "ts);t++;}
+ if (($5=="r")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=rmbpsmax value="$11/1000" "ts);t++;}
+ if (($5=="w")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=wmbpsmax value="$11/1000" "ts);t++;}
+ if (($5=="t")&&($6>0)) {printf("VlunMbps,%s,%s\n","VLUN="$2,"type=tmbpsmax value="$11/1000" "ts);t++;}
 
 # Current service times
  if (($5=="r")&&($6>0)) {printf("VlunSvt,%s,%s\n","VLUN="$2,"type=rsvtcur value="$12" "ts);t++;}
@@ -75,19 +75,19 @@
  if (($5=="t")&&($6>0)) {printf("HostIo,%s,%s\n","Host="$3,"type=tiomax value="$8" "ts);t++;}
 
 # Current mbps
- if (($5=="r")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=rmbpscur value="$9/1024" "ts);t++;}
- if (($5=="w")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=wmbpscur value="$9/1024" "ts);t++;}
- if (($5=="t")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=tmbpscur value="$9/1024" "ts);t++;}
+ if (($5=="r")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=rmbpscur value="$9/1000" "ts);t++;}
+ if (($5=="w")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=wmbpscur value="$9/1000" "ts);t++;}
+ if (($5=="t")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=tmbpscur value="$9/1000" "ts);t++;}
 
 # Avg mbps
- if (($5=="r")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=rmbpsavg value="$10/1024" "ts);t++;}
- if (($5=="w")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=wmbpsavg value="$10/1024" "ts);t++;}
- if (($5=="t")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=tmbpsavg value="$10/1024" "ts);t++;}
+ if (($5=="r")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=rmbpsavg value="$10/1000" "ts);t++;}
+ if (($5=="w")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=wmbpsavg value="$10/1000" "ts);t++;}
+ if (($5=="t")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=tmbpsavg value="$10/1000" "ts);t++;}
 
 # Max mbps
- if (($5=="r")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=rmbpsmax value="$11/1024" "ts);t++;}
- if (($5=="w")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=wmbpsmax value="$11/1024" "ts);t++;}
- if (($5=="t")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=tmbpsmax value="$11/1024" "ts);t++;}
+ if (($5=="r")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=rmbpsmax value="$11/1000" "ts);t++;}
+ if (($5=="w")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=wmbpsmax value="$11/1000" "ts);t++;}
+ if (($5=="t")&&($6>0)) {printf("HostMbps,%s,%s\n","Host="$3,"type=tmbpsmax value="$11/1000" "ts);t++;}
 
 # Current service times
  if (($5=="r")&&($6>0)) {printf("HostSvt,%s,%s\n","Host="$3,"type=rsvtcur value="$12" "ts);t++;}

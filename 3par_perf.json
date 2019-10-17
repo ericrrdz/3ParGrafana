@@ -16,11 +16,12 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 10,
-  "iteration": 1571251058773,
+  "iteration": 1571319924859,
   "links": [],
   "panels": [
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -41,6 +42,7 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -65,6 +67,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -171,6 +176,7 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -195,6 +201,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -301,6 +310,7 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -325,6 +335,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -423,7 +436,8 @@
       }
     },
     {
-      "collapsed": false,
+      "collapsed": true,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -431,361 +445,363 @@
         "y": 22
       },
       "id": 138,
-      "panels": [],
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "id": 116,
+          "interval": "15s",
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Total IOPS",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "HstPortIo",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"HstPortIo\" WHERE (\"type\" = 'tiocur') AND $timeFilter GROUP BY time($interval)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "tiocur"
+                }
+              ]
+            },
+            {
+              "alias": "Read IOPS",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "HstPortIo",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"HstPortIo\" WHERE (\"type\" = 'riocur') AND $timeFilter GROUP BY  time($interval)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "riocur"
+                }
+              ]
+            },
+            {
+              "alias": "Write IOPS",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "HstPortIo",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT sum(\"value\") FROM \"HstPortIo\" WHERE (\"type\" = 'wiocur') AND $timeFilter GROUP BY  time($interval)",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "wiocur"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$DS Sum Host Port IOPS",
+          "tooltip": {
+            "msResolution": true,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 9
+          },
+          "id": 139,
+          "interval": "15s",
+          "legend": {
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": true,
+            "show": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "HstPortIo",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT \"value\" FROM \"HstPortIo\" WHERE (\"type\" = 'tiocur') AND $timeFilter GROUP BY HostPort",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "tiocur"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$DS Per Host Port Total IOPS",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "io",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
       "title": "Host Ports Stats",
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$DS",
-      "editable": true,
-      "error": false,
-      "fill": 1,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 23
-      },
-      "id": 116,
-      "interval": "15s",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Total IOPS",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "HstPortIo",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"value\") FROM \"HstPortIo\" WHERE (\"type\" = 'tiocur') AND $timeFilter GROUP BY time($interval)",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "type",
-              "operator": "=",
-              "value": "tiocur"
-            }
-          ]
-        },
-        {
-          "alias": "Read IOPS",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "HstPortIo",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"value\") FROM \"HstPortIo\" WHERE (\"type\" = 'riocur') AND $timeFilter GROUP BY  time($interval)",
-          "rawQuery": true,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "type",
-              "operator": "=",
-              "value": "riocur"
-            }
-          ]
-        },
-        {
-          "alias": "Write IOPS",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "HstPortIo",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"value\") FROM \"HstPortIo\" WHERE (\"type\" = 'wiocur') AND $timeFilter GROUP BY  time($interval)",
-          "rawQuery": true,
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "type",
-              "operator": "=",
-              "value": "wiocur"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$DS Sum Host Port IOPS",
-      "tooltip": {
-        "msResolution": true,
-        "shared": true,
-        "sort": 2,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "none",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "none",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Training",
-      "editable": true,
-      "error": false,
-      "fill": 1,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 30
-      },
-      "id": 139,
-      "interval": "15s",
-      "legend": {
-        "avg": false,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": true,
-        "min": true,
-        "show": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "dsType": "influxdb",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "HstPortIo",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT \"value\" FROM \"HstPortIo\" WHERE (\"type\" = 'tiocur') AND $timeFilter GROUP BY HostPort",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "type",
-              "operator": "=",
-              "value": "tiocur"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "$DS Per Host Port Total IOPS",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 2,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "none",
-          "label": "io",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "none",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 23
       },
       "id": 124,
       "panels": [],
@@ -801,12 +817,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 38
+        "y": 24
       },
       "id": 140,
       "interval": "15s",
@@ -823,6 +840,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1016,16 +1036,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Training",
+      "datasource": "$DS",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 31
       },
       "id": 119,
       "interval": "15s",
@@ -1044,6 +1065,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1058,22 +1082,16 @@
           "groupBy": [
             {
               "params": [
-                "$interval"
+                "VLUN"
               ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
+              "type": "tag"
             }
           ],
-          "measurement": "VlunMbps",
+          "measurement": "VlunIo",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT \"value\" FROM \"VlunIo\" WHERE \"type\" = 'tiocur'  AND $timeFilter GROUP BY VLUN",
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -1090,7 +1108,7 @@
             {
               "key": "type",
               "operator": "=",
-              "value": "tmbpscur"
+              "value": "tiocur"
             }
           ]
         }
@@ -1138,11 +1156,12 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 38
       },
       "id": 130,
       "panels": [],
@@ -1158,12 +1177,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 53
+        "y": 39
       },
       "id": 131,
       "interval": "15s",
@@ -1180,6 +1200,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1373,16 +1396,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Training",
+      "datasource": "$DS",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 46
       },
       "id": 132,
       "interval": "15s",
@@ -1401,6 +1425,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1498,16 +1525,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Training",
+      "datasource": "$DS",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 53
       },
       "id": 133,
       "interval": "15s",
@@ -1526,6 +1554,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1623,16 +1654,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Training",
+      "datasource": "$DS",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 60
       },
       "id": 134,
       "interval": "15s",
@@ -1651,6 +1683,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1748,16 +1783,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Training",
+      "datasource": "$DS",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 81
+        "y": 67
       },
       "id": 135,
       "interval": "15s",
@@ -1776,6 +1812,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1873,16 +1912,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Training",
+      "datasource": "$DS",
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 88
+        "y": 74
       },
       "id": 136,
       "interval": "15s",
@@ -1901,6 +1941,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1995,11 +2038,12 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 95
+        "y": 81
       },
       "id": 91,
       "panels": [],
@@ -2015,12 +2059,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 96
+        "y": 82
       },
       "id": 16,
       "interval": "15s",
@@ -2039,6 +2084,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2328,12 +2376,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 103
+        "y": 89
       },
       "id": 108,
       "interval": "15s",
@@ -2352,6 +2401,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2641,12 +2693,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 110
+        "y": 96
       },
       "id": 109,
       "interval": "15s",
@@ -2663,6 +2716,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -2952,12 +3008,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 117
+        "y": 103
       },
       "id": 106,
       "interval": "15s",
@@ -2974,6 +3031,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -3263,12 +3323,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 124
+        "y": 110
       },
       "id": 110,
       "interval": "15s",
@@ -3285,6 +3346,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -3574,12 +3638,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 131
+        "y": 117
       },
       "id": 111,
       "interval": "15s",
@@ -3596,6 +3661,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -3885,12 +3953,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 138
+        "y": 124
       },
       "id": 107,
       "interval": "15s",
@@ -3907,6 +3976,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -4196,12 +4268,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 145
+        "y": 131
       },
       "id": 112,
       "interval": "15s",
@@ -4218,6 +4291,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -4507,12 +4583,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 152
+        "y": 138
       },
       "id": 113,
       "interval": "15s",
@@ -4529,6 +4606,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -4811,11 +4891,12 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 159
+        "y": 145
       },
       "id": 99,
       "panels": [],
@@ -4831,12 +4912,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 160
+        "y": 146
       },
       "id": 125,
       "interval": "15s",
@@ -4853,6 +4935,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -5050,12 +5135,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 167
+        "y": 153
       },
       "id": 126,
       "interval": "15s",
@@ -5074,6 +5160,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -5175,12 +5264,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 174
+        "y": 160
       },
       "id": 114,
       "interval": "15s",
@@ -5199,6 +5289,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -5300,12 +5393,13 @@
       "editable": true,
       "error": false,
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 181
+        "y": 167
       },
       "id": 115,
       "interval": "15s",
@@ -5324,6 +5418,9 @@
       "linewidth": 2,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -5417,365 +5514,374 @@
       }
     },
     {
-      "collapsed": true,
+      "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 188
+        "y": 174
       },
       "id": 103,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$DS",
-          "editable": true,
-          "error": false,
-          "fill": 1,
-          "grid": {},
-          "gridPos": {
-            "h": 7,
-            "w": 24,
-            "x": 0,
-            "y": 7
-          },
-          "id": 127,
-          "interval": "15s",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 2,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "alias": "Total IOPS",
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "measurement": "FC10Io",
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
-              "rawQuery": false,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "sum"
-                  }
-                ]
-              ],
-              "tags": [
-                {
-                  "key": "type",
-                  "operator": "=",
-                  "value": "tiocur"
-                }
-              ]
-            },
-            {
-              "alias": "Read IOPS",
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "measurement": "FC10Io",
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
-              "rawQuery": false,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "sum"
-                  }
-                ]
-              ],
-              "tags": [
-                {
-                  "key": "type",
-                  "operator": "=",
-                  "value": "riocur"
-                }
-              ]
-            },
-            {
-              "alias": "Write IOPS",
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "measurement": "FC10Io",
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
-              "rawQuery": false,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "sum"
-                  }
-                ]
-              ],
-              "tags": [
-                {
-                  "key": "type",
-                  "operator": "=",
-                  "value": "wiocur"
-                }
-              ]
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "$DS Sum FC10k IOPS",
-          "tooltip": {
-            "msResolution": true,
-            "shared": false,
-            "sort": 0,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "none",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "none",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$DS",
-          "editable": true,
-          "error": false,
-          "fill": 1,
-          "grid": {},
-          "gridPos": {
-            "h": 7,
-            "w": 24,
-            "x": 0,
-            "y": 14
-          },
-          "id": 93,
-          "interval": "15s",
-          "legend": {
-            "avg": false,
-            "current": false,
-            "hideEmpty": true,
-            "hideZero": true,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 2,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "measurement": "Host",
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT \"value\" FROM \"FC10Io\" WHERE \"type\" = 'tiocur' AND value >  0 AND $timeFilter GROUP BY PDID",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  }
-                ]
-              ],
-              "tags": [
-                {
-                  "key": "type",
-                  "operator": "=",
-                  "value": "io"
-                }
-              ]
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "$DS Per FC 10k PD Total IOPS",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 2,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "none",
-              "label": "io",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "none",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "title": "PD Stats - FC 10k",
       "type": "row"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 175
+      },
+      "id": 127,
+      "interval": "15s",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Total IOPS",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "FC10Io",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tiocur"
+            }
+          ]
+        },
+        {
+          "alias": "Read IOPS",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "FC10Io",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "riocur"
+            }
+          ]
+        },
+        {
+          "alias": "Write IOPS",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "FC10Io",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
+          "rawQuery": false,
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "wiocur"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$DS Sum FC10k IOPS",
+      "tooltip": {
+        "msResolution": true,
+        "shared": false,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 182
+      },
+      "id": 93,
+      "interval": "15s",
+      "legend": {
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": false,
+        "min": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Host",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"value\" FROM \"FC10Io\" WHERE \"type\" = 'tiocur' AND value >  0 AND $timeFilter GROUP BY PDID",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "io"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$DS Per FC 10k PD Total IOPS",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 2,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "io",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": true,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -6134,15 +6240,16 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 18,
+  "schemaVersion": 20,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "text": "Training",
-          "value": "Training"
+          "selected": false,
+          "text": "$DS",
+          "value": "$DS"
         },
         "datasource": null,
         "hide": 0,
@@ -6160,8 +6267,8 @@
     ]
   },
   "time": {
-    "from": "2019-08-26T17:00:00.000Z",
-    "to": "2019-08-27T01:00:00.000Z"
+    "from": "Today",
+    "to": "Today"
   },
   "timepicker": {
     "now": true,
@@ -6192,5 +6299,5 @@
   "timezone": "browser",
   "title": "3Par Performance",
   "uid": "YvAAsiKZk",
-  "version": 55
+  "version": 56
 }

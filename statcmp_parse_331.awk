@@ -6,7 +6,7 @@
 
 ### Node stats ###
 # DelAck
-if ((NF==10)&&($7==230400)) {printf("NodeDelAck,%s,%s\n","Node="$1,"type=fcdelack value="$8" "ts);t++;}
-if ((NF==10)&&($7==230400)) {printf("NodeDelAck,%s,%s\n","Node="$1,"type=nldelack value="$9" "ts);t++;}
-if ((NF==10)&&($7==230400)) {printf("NodeDelAck,%s,%s\n","Node="$1,"type=ssddelack value="$10" "ts);t++;}
+if ((NF==10)&&($7==76800)) {printf("NodeDelAck,%s,%s\n","Node="$1,"type=fcdelack value="$8" "ts);t++;}
+if ((NF==10)&&($7==76800)) {printf("NodeDelAck,%s,%s\n","Node="$1,"type=nldelack value="$9" "ts);t++;}
+if ((NF==10)&&($7==76800)) {printf("NodeDelAck,%s,%s\n","Node="$1,"type=ssddelack value="$10" "ts);t++;}
 }

@@ -1,0 +1,39 @@
+#!/bin/bash
+echo "Use this script if appending to existing database. Statcmp parsing will have to be done separately depending on release"
+
+read -p  'Enter DB Name: ' dbname
+
+echo "Processing PD data"
+statpd_parse.awk statpd* |split -l 4150000 - pd_
+
+echo "Uploading PD data to database $dbname"
+for pd in pd_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$pd
+done
+
+echo "Processing Disk Port data"
+statport-disk_parse.awk statport-disk* > diskport
+echo "Uploading Disk Port data to database $dbname"
+curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @diskport
+
+echo "Processing Host Port data"
+statport-host_parse.awk statport-host* > hostport
+echo "Uploading Host Port data to database $dbname"
+curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @hostport
+
+echo "Processing VV data"
+statvv_parse.awk statvv* |split -l 4150000 - vv_
+echo "Uploading VV data to database $dbname"
+for vv in vv_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vv
+done
+
+echo "Processing VLUN data"
+statvlun_parse.awk statvlun* |split -l 4150000 - vlun_
+echo "Uploading VLUN data to database $dbname"
+for vlun in vlun_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vlun
+done
+
+echo "cleaning up..."
+rm pd_* diskport hostport vv_* vlun_*

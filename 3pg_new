@@ -10,7 +10,7 @@ echo "Creating database $dbname"
 influx -execute "CREATE DATABASE $dbname"
 
 echo "Processing PD data"
-statpd_parse.awk statpd* |split -l 4150000 - pd_
+statpd_parse.awk statpd* |split -l 500000 - pd_
 
 echo "Uploading PD data to database $dbname"
 for pd in pd_*;
@@ -28,14 +28,14 @@ echo "Uploading Host Port data to database $dbname"
 curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @hostport
 
 echo "Processing VV data"
-statvv_parse.awk statvv* |split -l 4150000 - vv_
+statvv_parse.awk statvv* |split -l 500000 - vv_
 echo "Uploading VV data to database $dbname"
 for vv in vv_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vv
 done
 
 echo "Processing VLUN data"
-statvlun_parse.awk statvlun* |split -l 4150000 - vlun_
+statvlun_parse.awk statvlun* |split -l 500000 - vlun_
 echo "Uploading VLUN data to database $dbname"
 for vlun in vlun_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vlun

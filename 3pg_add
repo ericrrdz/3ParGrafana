@@ -15,12 +15,12 @@ do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-
 done
 
 echo "Processing Disk Port data"
-statport-disk_parse.awk statport-*disk* > diskport
+statport-disk_parse.awk statport*disk* > diskport
 echo "Uploading Disk Port data to database $dbname"
 curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @diskport
 
 echo "Processing Host Port data"
-statport-host_parse.awk statport-*host* > hostport
+statport-host_parse.awk statport*host* > hostport
 echo "Uploading Host Port data to database $dbname"
 curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @hostport
 

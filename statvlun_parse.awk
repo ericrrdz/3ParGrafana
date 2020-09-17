@@ -56,5 +56,5 @@
  if (($5=="t")&&($6>0)) {printf("VlunIo,%s,%s,%s,%s\n","VLUN="$2,"HOST="$3,"PORT="$4,"type=tioszavg value="$15" "ts);t++;}
 
 # Qlen
- if (($5=="t")&&($6>0)&&$16>0) {printf("VlunIo,%s,%s,%s,%s\n","VLUN="$2,"HOST="$3,"PORT="$4,"type=qlen value="$16" "ts);t++;}
+ if (($5=="t")&&($6>0)) {printf("VlunIo,%s,%s,%s,%s\n","VLUN="$2,"HOST="$3,"PORT="$4,"type=qlen value="$16" "ts);t++;}
 }

@@ -23,5 +23,7 @@ The files outputted above can then be fed to influxdb using cURL:<br>
 <br>
 Depending on size of out files, some influxdb settings (max-body-size, timeouts, max-series-per-database) in /etc/influxdb/influxdb.conf may have to be modified. <br>
 <br>
+The above can be automated using 3pg_new & 3pg_add scripts. 3pg_new will create new influx DB & 3pg_add will add to an existing influx DB. Both will prompt for name of DB upon running
+
 <br>
 

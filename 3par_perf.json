@@ -1,25 +1,4 @@
 {
-  "__inputs": [],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.0.3"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "influxdb",
-      "name": "InfluxDB",
-      "version": "1.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -36,10 +15,819 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": null,
-  "iteration": 1592486843904,
+  "id": 32,
+  "iteration": 1603851046186,
   "links": [],
   "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 229,
+      "panels": [],
+      "title": "Service Time Quick Peak",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS",
+      "decimals": 3,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 227,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.0-test",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "VLUN Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "VlunIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtcur"
+            }
+          ]
+        },
+        {
+          "alias": "Host Port Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "HostPortIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtcur"
+            }
+          ]
+        },
+        {
+          "alias": "Disk Port Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "DiskPortIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtcur"
+            }
+          ]
+        },
+        {
+          "alias": "VV Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "VvIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtcur"
+            }
+          ]
+        },
+        {
+          "alias": "[[tag_TIER]] [[tag_SPEED]] PD Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "TIER"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "SPEED"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PdIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtcur"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtcur"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Quick Glance Max Service Times",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS",
+      "decimals": 3,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 14,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "hiddenSeries": false,
+      "id": 230,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.0-test",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "VLUN [[tag_type]] Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "type"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "VlunIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtavg"
+            }
+          ]
+        },
+        {
+          "alias": "Host Port [[tag_type]] Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "type"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "HostPortIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtavg"
+            }
+          ]
+        },
+        {
+          "alias": "VV [[tag_type]] Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "type"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "VvIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtavg"
+            }
+          ]
+        },
+        {
+          "alias": "Disk Port [[tag_type]] Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "type"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "DiskPortIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtavg"
+            }
+          ]
+        },
+        {
+          "alias": "PD [[tag_TIER]][[tag_SPEED]] [[tag_type]] Service times",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "type"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "TIER"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "SPEED"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PdIo",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=",
+              "value": "tsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "rsvtavg"
+            },
+            {
+              "condition": "OR",
+              "key": "type",
+              "operator": "=",
+              "value": "wsvtavg"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Quick Glance Avg Service Times",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
     {
       "collapsed": true,
       "datasource": null,
@@ -47,7 +835,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 29
       },
       "id": 163,
       "panels": [
@@ -61,7 +849,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -94,9 +883,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -294,7 +1084,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -327,9 +1118,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -527,7 +1319,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -560,9 +1353,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -760,7 +1554,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -793,9 +1588,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -892,7 +1688,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -927,9 +1724,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1027,7 +1825,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -1062,9 +1861,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1149,7 +1949,7 @@
           "yaxes": [
             {
               "format": "ms",
-              "label": "MB/s",
+              "label": "service time",
               "logBase": 1,
               "max": null,
               "min": null,
@@ -1179,7 +1979,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 30
       },
       "id": 175,
       "panels": [
@@ -1193,7 +1993,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -1220,8 +2021,6 @@
             "rightSide": true,
             "show": true,
             "sideWidth": null,
-            "sort": "avg",
-            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -1229,10 +2028,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": true,
+          "pluginVersion": "7.1.5",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1339,7 +2136,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -1375,10 +2173,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": true,
+          "pluginVersion": "7.1.5",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1485,7 +2281,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -1521,10 +2318,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": true,
+          "pluginVersion": "7.1.5",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1620,6 +2415,302 @@
             "align": false,
             "alignLevel": null
           }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 23
+          },
+          "hiddenSeries": false,
+          "id": 221,
+          "interval": "1s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": null,
+            "sort": "avg",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": true,
+          "pluginVersion": "7.1.5",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "[[tag_HOST]] [[tag_PORT]]",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "HOST"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "PORT"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "VlunIo",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT \"value\" FROM \"VlunIo\" WHERE \"type\" = 'tiocur'  AND $timeFilter GROUP BY VLUN",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "rsvtavg"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$DS Per Host Total Service Times (mean)",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": "KB",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 30
+          },
+          "hiddenSeries": false,
+          "id": 222,
+          "interval": "1s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": null,
+            "sort": "avg",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": true,
+          "pluginVersion": "7.1.5",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "[[tag_HOST]] [[tag_PORT]]",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "HOST"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "VlunIo",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT \"value\" FROM \"VlunIo\" WHERE \"type\" = 'tiocur'  AND $timeFilter GROUP BY VLUN",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "qlen"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$DS Per Host QLEN (sum of all ports)",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "KB",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "title": "Host Stats",
@@ -1632,7 +2723,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 2
+        "y": 31
       },
       "id": 197,
       "panels": [
@@ -1644,7 +2735,8 @@
           "datasource": "$DS",
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -1654,7 +2746,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 3
+            "y": 45
           },
           "hiddenSeries": false,
           "id": 199,
@@ -1673,10 +2765,8 @@
           "lines": true,
           "linewidth": 1,
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.1.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -1864,7 +2954,8 @@
           "datasource": "$DS",
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -1874,7 +2965,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 11
+            "y": 53
           },
           "hiddenSeries": false,
           "id": 200,
@@ -1893,10 +2984,8 @@
           "lines": true,
           "linewidth": 1,
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.1.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -2084,7 +3173,8 @@
           "datasource": "$DS",
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -2094,7 +3184,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 19
+            "y": 61
           },
           "hiddenSeries": false,
           "id": 201,
@@ -2114,10 +3204,8 @@
           "lines": true,
           "linewidth": 1,
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.1.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -2264,7 +3352,8 @@
           "datasource": "$DS",
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -2274,7 +3363,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 27
+            "y": 69
           },
           "hiddenSeries": false,
           "id": 202,
@@ -2293,10 +3382,8 @@
           "lines": true,
           "linewidth": 1,
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.1.5",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -2487,7 +3574,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 32
       },
       "id": 124,
       "panels": [
@@ -2501,7 +3588,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -2538,9 +3626,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2647,7 +3736,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -2684,9 +3774,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2793,7 +3884,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -2830,9 +3922,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2939,7 +4032,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -2976,9 +4070,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3091,7 +4186,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -3128,9 +4224,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3243,7 +4340,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -3280,9 +4378,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3395,7 +4494,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -3431,10 +4531,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3547,7 +4645,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -3583,10 +4682,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3699,7 +4796,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -3735,10 +4833,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3851,7 +4947,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -3887,10 +4984,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4003,7 +5098,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -4039,10 +5135,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4156,7 +5250,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -4192,10 +5287,8 @@
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
-          "options": {
-            "dataLinks": []
-          },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4309,7 +5402,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 33
       },
       "id": 159,
       "panels": [
@@ -4323,7 +5416,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -4360,9 +5454,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4476,7 +5571,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -4513,9 +5609,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4629,7 +5726,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -4666,9 +5764,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4782,7 +5881,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -4819,9 +5919,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -4935,7 +6036,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -4972,9 +6074,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5088,7 +6191,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -5125,9 +6229,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5241,7 +6346,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -5278,9 +6384,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5383,6 +6490,162 @@
             "align": false,
             "alignLevel": null
           }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "description": "",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 54
+          },
+          "hiddenSeries": false,
+          "id": 224,
+          "interval": "15s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": false,
+            "hideZero": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 300,
+            "sort": "avg",
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.0-test",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Host:[[tag_HOST]] / VLUN:[[tag_VLUN]]",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "45s"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "HOST"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "VLUN"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "VlunIo",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT \"value\" FROM \"HostIo\" WHERE (\"type\" = 'tiocur') AND $timeFilter GROUP BY Host",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "tsvtavg"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$DS Per Host + VLUN Avg Service Times",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": "IOsz",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "title": "Combined Host/VLUN",
@@ -5395,7 +6658,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 34
       },
       "id": 146,
       "panels": [
@@ -5409,7 +6672,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -5442,9 +6706,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5516,7 +6781,7 @@
                   "type": "fill"
                 }
               ],
-              "measurement": "VlunIo",
+              "measurement": "VvIo",
               "orderByTime": "ASC",
               "policy": "default",
               "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
@@ -5562,7 +6827,7 @@
                   "type": "fill"
                 }
               ],
-              "measurement": "VlunIo",
+              "measurement": "VvIo",
               "orderByTime": "ASC",
               "policy": "default",
               "query": "SELECT value FROM \"Host\" WHERE \"type\" = 'rio' AND $timeFilter GROUP BY Host",
@@ -5643,7 +6908,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -5678,9 +6944,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5787,7 +7054,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -5814,6 +7082,8 @@
             "rightSide": true,
             "show": true,
             "sideWidth": 300,
+            "sort": "avg",
+            "sortDesc": true,
             "total": false,
             "values": true
           },
@@ -5822,9 +7092,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -5931,7 +7202,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -5968,9 +7240,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -6077,7 +7350,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -6112,9 +7386,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -6222,77 +7497,61 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 35
       },
       "id": 118,
       "panels": [
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
           "datasource": "$DS",
-          "editable": true,
-          "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": [],
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
             },
             "overrides": []
           },
-          "fill": 1,
-          "fillGradient": 0,
-          "grid": {},
           "gridPos": {
-            "h": 7,
-            "w": 24,
+            "h": 13,
+            "w": 5,
             "x": 0,
             "y": 7
           },
-          "hiddenSeries": false,
-          "id": 154,
+          "id": 223,
           "interval": "15s",
-          "legend": {
-            "alignAsTable": true,
-            "avg": false,
-            "current": false,
-            "hideEmpty": true,
-            "hideZero": true,
-            "max": false,
-            "min": false,
-            "rightSide": true,
-            "show": true,
-            "sideWidth": 300,
-            "sort": "total",
-            "sortDesc": true,
-            "total": true,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 2,
           "links": [],
-          "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "last"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "textMode": "auto"
           },
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
+          "pluginVersion": "7.3.0-test",
           "targets": [
             {
-              "alias": "",
+              "alias": "[[tag_type]] - Node[[tag_Node]]",
               "groupBy": [
-                {
-                  "params": [
-                    "15s"
-                  ],
-                  "type": "time"
-                },
                 {
                   "params": [
                     "Node"
@@ -6304,14 +7563,9 @@
                     "type"
                   ],
                   "type": "tag"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
                 }
               ],
+              "hide": false,
               "measurement": "NodeDelAck",
               "orderByTime": "ASC",
               "policy": "default",
@@ -6326,56 +7580,16 @@
                       "value"
                     ],
                     "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "sum"
                   }
                 ]
               ],
               "tags": []
             }
           ],
-          "thresholds": [],
           "timeFrom": null,
-          "timeRegions": [],
           "timeShift": null,
-          "title": "$DS Delayed Ack by Node",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 2,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "none",
-              "label": "DelAck",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "none",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "title": "$DS Delayed Ack by Node (total count)",
+          "type": "stat"
         },
         {
           "aliasColors": {},
@@ -6387,7 +7601,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -6395,10 +7610,10 @@
           "fillGradient": 0,
           "grid": {},
           "gridPos": {
-            "h": 7,
-            "w": 24,
-            "x": 0,
-            "y": 14
+            "h": 13,
+            "w": 19,
+            "x": 5,
+            "y": 7
           },
           "hiddenSeries": false,
           "id": 180,
@@ -6409,22 +7624,23 @@
             "current": false,
             "hideEmpty": true,
             "hideZero": true,
-            "max": false,
+            "max": true,
             "min": false,
             "rightSide": true,
             "show": true,
             "sideWidth": 300,
             "total": false,
-            "values": false
+            "values": true
           },
           "lines": true,
           "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -6434,7 +7650,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "alias": "",
+              "alias": "[[tag_type]] - Node[[tag_Node]]",
               "groupBy": [
                 {
                   "params": [
@@ -6529,6 +7745,157 @@
             "align": false,
             "alignLevel": null
           }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "links": []
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 20
+          },
+          "hiddenSeries": false,
+          "id": 225,
+          "interval": "15s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "sideWidth": 300,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.0-test",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "[[tag_type]] - Node[[tag_Node]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "15s"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "Node"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "NodeDelAck",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT \"value\" FROM \"NodeDelAck\" WHERE \"type\" = 'ssd150delack' AND value >  0 AND $timeFilter GROUP BY Node",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "$DS Graphed Delayed Ack counts by Node",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "none",
+              "label": "DelAck",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "none",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "title": "DelAck",
@@ -6541,7 +7908,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 36
       },
       "id": 208,
       "panels": [
@@ -6555,7 +7922,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -6588,9 +7956,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -6788,7 +8157,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -6821,9 +8191,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -7021,7 +8392,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -7054,9 +8426,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -7254,7 +8627,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -7287,9 +8661,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -7401,7 +8776,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -7434,9 +8810,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -7549,7 +8926,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 37
       },
       "id": 91,
       "panels": [
@@ -7563,7 +8940,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -7590,6 +8968,8 @@
             "rightSide": true,
             "show": true,
             "sideWidth": 300,
+            "sort": "avg",
+            "sortDesc": true,
             "total": true,
             "values": true
           },
@@ -7598,9 +8978,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -7718,7 +9099,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -7753,9 +9135,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -7874,7 +9257,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -7909,9 +9293,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8030,7 +9415,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -8065,9 +9451,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8186,7 +9573,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -8213,8 +9601,8 @@
             "rightSide": true,
             "show": true,
             "sideWidth": 300,
-            "sort": null,
-            "sortDesc": null,
+            "sort": "avg",
+            "sortDesc": true,
             "total": true,
             "values": true
           },
@@ -8223,9 +9611,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8235,7 +9624,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "alias": "PD[[tag_PD]]",
+              "alias": "PD[[tag_PD]] [[tag_TIER]]",
               "dsType": "influxdb",
               "groupBy": [
                 {
@@ -8350,7 +9739,8 @@
           "error": false,
           "fieldConfig": {
             "defaults": {
-              "custom": {}
+              "custom": {},
+              "links": []
             },
             "overrides": []
           },
@@ -8387,9 +9777,10 @@
           "links": [],
           "nullPointMode": "connected",
           "options": {
-            "dataLinks": []
+            "alertThreshold": true
           },
           "percentage": false,
+          "pluginVersion": "7.3.0-test",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8521,7 +9912,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 38
       },
       "id": 218,
       "panels": [
@@ -8679,18 +10070,19 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "",
-          "value": ""
+          "selected": true,
+          "text": "sm",
+          "value": "sm"
         },
         "datasource": null,
+        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "DS",
@@ -8738,5 +10130,5 @@
   "timezone": "browser",
   "title": "3Par Performance",
   "uid": "YvAAsiKZk",
-  "version": 127
+  "version": 16
 }

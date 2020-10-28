@@ -38,5 +38,12 @@ for vlun in vlun_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vlun
 done
 
+echo "Processing iscsi counters"
+statiscsifull_parse.awk statiscsi-full* |split -l 500000 - iscsi_
+echo "Uploading VLUN data to database $dbname"
+for iscsi in iscsi_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$iscsi
+done
+
 echo "cleaning up..."
-rm pd_* diskport hostport vv_* vlun_*
+rm pd_* diskport hostport vv_* vlun_* iscsi_*

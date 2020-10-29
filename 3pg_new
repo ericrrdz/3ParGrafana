@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Use this script if creating new database. Statcmp parsing will have to be done separately depending on release"
+echo "Use this script if creating new database."
 
 read -p  'Enter DB Name: ' dbname
 

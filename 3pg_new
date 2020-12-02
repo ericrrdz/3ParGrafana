@@ -54,5 +54,11 @@ for vlun in vlun_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vlun
 done
 
+echo "Processing RCVV data"
+statrcvv_parse.awk statrcvv* |split -l 500000 - rcvv_
+echo "Uploading RCVV data to database $dbname"
+for rcvv in rcvv_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$rcvv
+done
 echo "cleaning up..."
-rm pd_* diskport hostport vv_* vlun_* iscsi_* cmp_*
+rm pd_* diskport hostport vv_* vlun_* iscsi_* cmp_* rcvv_*

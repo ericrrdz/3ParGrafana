@@ -57,5 +57,13 @@ echo "Uploading RCVV data to database $dbname"
 for rcvv in rcvv_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$rcvv
 done
+
+echo "Processing QoS data"
+statqos_parse.awk statqos* |split -l 500000 - qos_
+echo "Uploading QoS data to database $dbname"
+for qos in qos_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$qos
+done
+
 echo "cleaning up..."
-rm pd_* diskport hostport vv_* vlun_* iscsi_* cmp_* rcvv_*
+rm pd_* diskport hostport vv_* vlun_* iscsi_* cmp_* rcvv_* qos_*

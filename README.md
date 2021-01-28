@@ -12,6 +12,7 @@ statport-disk_parse.awk statport-disk.out > diskportinfo<br>
 statport-host_parse.awk statport-host.out > hostportinfo<br>
 statvlun_parse.awk statvlun.out > vluninfo<br>
 statvv_parse.awk statvv.out > vvinfo<br>
+etc,etc<br>
 <br>
 The files outputted above can then be fed to influxdb using cURL:<br>
 /usr/bin/curl -i -XPOST 'http://127.0.0.1:8086/write?db=test&precision=s' --data-binary @cmpinfo<br>

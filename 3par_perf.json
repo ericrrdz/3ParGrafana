@@ -2,10 +2,16 @@
   "__inputs": [],
   "__requires": [
     {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "7.3.5"
+      "version": "7.3.7"
     },
     {
       "type": "panel",
@@ -43,7 +49,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": null,
-  "iteration": 1608216276978,
+  "iteration": 1611862276579,
   "links": [],
   "panels": [
     {
@@ -57,6 +63,129 @@
       },
       "id": 229,
       "panels": [
+        {
+          "datasource": "$DS",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "percentage",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "light-orange",
+                    "value": 50
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 385,
+          "interval": "",
+          "options": {
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "mean"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true
+          },
+          "pluginVersion": "7.3.7",
+          "repeat": null,
+          "targets": [
+            {
+              "alias": "Node:[[tag_NODE]] [[tag_type]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "NODE"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "linear"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "CPU",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "queryType": "randomWalk",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "sys"
+                },
+                {
+                  "condition": "OR",
+                  "key": "type",
+                  "operator": "=",
+                  "value": "idle"
+                },
+                {
+                  "condition": "OR",
+                  "key": "type",
+                  "operator": "=",
+                  "value": "user"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Node CPU Avg Usage",
+          "transparent": true,
+          "type": "gauge"
+        },
         {
           "aliasColors": {},
           "bars": false,
@@ -76,7 +205,7 @@
             "h": 14,
             "w": 24,
             "x": 0,
-            "y": 1
+            "y": 5
           },
           "hiddenSeries": false,
           "id": 227,
@@ -101,7 +230,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -529,7 +658,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:561",
               "format": "ms",
               "label": null,
               "logBase": 1,
@@ -538,7 +666,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:562",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -572,7 +699,7 @@
             "h": 14,
             "w": 24,
             "x": 0,
-            "y": 15
+            "y": 19
           },
           "hiddenSeries": false,
           "id": 230,
@@ -596,7 +723,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 2,
           "points": false,
           "renderer": "flot",
@@ -1054,7 +1181,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:4555",
               "format": "ms",
               "label": null,
               "logBase": 1,
@@ -1063,7 +1189,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:4556",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -1100,7 +1225,7 @@
             "h": 10,
             "w": 24,
             "x": 0,
-            "y": 29
+            "y": 33
           },
           "hiddenSeries": false,
           "id": 231,
@@ -1129,7 +1254,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1219,7 +1344,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:688",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -1227,7 +1351,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:689",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -1252,6 +1375,801 @@
         "w": 24,
         "x": 0,
         "y": 1
+      },
+      "id": 375,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "hiddenSeries": false,
+          "id": 377,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": false
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Node[[tag_NODE]] user",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "NODE"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "linear"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "CPU",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "user"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU (user)",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 14
+          },
+          "hiddenSeries": false,
+          "id": 379,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": false
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Node[[tag_NODE]] sys",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "NODE"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "linear"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "CPU",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "sys"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU (sys)",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 26
+          },
+          "hiddenSeries": false,
+          "id": 378,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": false
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Node[[tag_NODE]] idle",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "NODE"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "linear"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "CPU",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "idle"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU (idle)",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percent",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 38
+          },
+          "hiddenSeries": false,
+          "id": 380,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": false
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Node[[tag_NODE]] intr/s",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "NODE"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "linear"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "CPU",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "intr"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU (Interrupts/sec)",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$DS",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 50
+          },
+          "hiddenSeries": false,
+          "id": 381,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": true,
+            "hideZero": true,
+            "max": false,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "nullPointMode": "null as zero",
+          "options": {
+            "alertThreshold": false
+          },
+          "percentage": false,
+          "pluginVersion": "7.3.7",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "Node[[tag_NODE]] ctxt/s",
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "NODE"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "linear"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "CPU",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "type",
+                  "operator": "=",
+                  "value": "ctxt"
+                }
+              ]
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "CPU (Context Switches/sec)",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "CPU",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
       },
       "id": 118,
       "panels": [
@@ -1480,7 +2398,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24142",
               "format": "short",
               "label": "DelAck",
               "logBase": 1,
@@ -1489,7 +2406,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24143",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -1633,7 +2549,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24260",
               "format": "none",
               "label": "DelAck",
               "logBase": 1,
@@ -1642,7 +2557,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24261",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -1666,7 +2580,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 2
+        "y": 3
       },
       "id": 320,
       "panels": [
@@ -1886,7 +2800,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1034",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -1894,7 +2807,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1035",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -2123,7 +3035,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1434",
               "format": "MBs",
               "logBase": 1,
               "max": null,
@@ -2131,7 +3042,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1435",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -2314,7 +3224,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1639",
               "format": "deckbytes",
               "logBase": 1,
               "max": null,
@@ -2322,7 +3231,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1640",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -2346,7 +3254,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 4
       },
       "id": 163,
       "panels": [
@@ -2483,7 +3391,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1758",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -2491,7 +3398,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1759",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -2637,7 +3543,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:3362",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -2646,7 +3551,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:3363",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -2798,7 +3702,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:978",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -2807,7 +3710,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:979",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -2959,7 +3861,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1886",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -2968,7 +3869,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1887",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -3108,7 +4008,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:665",
               "format": "none",
               "label": "qlen",
               "logBase": 1,
@@ -3117,7 +4016,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:666",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -3141,7 +4039,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 5
       },
       "id": 197,
       "panels": [
@@ -3346,7 +4244,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:5320",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -3355,7 +4252,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:5321",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -3572,7 +4468,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:5521",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -3581,7 +4476,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:5522",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -3756,7 +4650,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:5682",
               "format": "deckbytes",
               "label": null,
               "logBase": 1,
@@ -3765,7 +4658,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:5683",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -3980,7 +4872,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:5923",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -3989,7 +4880,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:5924",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -4014,7 +4904,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 124,
       "panels": [
@@ -4146,7 +5036,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6418",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -4155,7 +5044,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6419",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -4302,7 +5190,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6941",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -4311,7 +5198,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6942",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -4458,7 +5344,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:7053",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -4467,7 +5352,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:7054",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -4614,7 +5498,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:7177",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -4623,7 +5506,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:7178",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -4770,7 +5652,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:7177",
               "format": "none",
               "label": "qlen",
               "logBase": 1,
@@ -4779,7 +5660,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:7178",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -4803,7 +5683,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 7
       },
       "id": 302,
       "panels": [
@@ -4935,7 +5815,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6539",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -4944,7 +5823,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6540",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -5091,7 +5969,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:7446",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -5100,7 +5977,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:7447",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -5241,7 +6117,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:7570",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -5250,7 +6125,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:7571",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -5391,7 +6265,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:7694",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -5400,7 +6273,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:7695",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -5424,7 +6296,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 304,
       "panels": [
@@ -5556,7 +6428,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6668",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -5565,7 +6436,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6669",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -5712,7 +6582,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:8113",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -5721,7 +6590,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:8114",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -5862,7 +6730,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:8237",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -5871,7 +6738,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:8238",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -6013,7 +6879,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:8379",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -6022,7 +6887,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:8380",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -6046,7 +6910,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 175,
       "panels": [
@@ -6178,7 +7042,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2315",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -6187,7 +7050,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2316",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -6328,7 +7190,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2567",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -6337,7 +7198,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2568",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -6478,7 +7338,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2446",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -6487,7 +7346,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2447",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -6639,7 +7497,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2688",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -6648,7 +7505,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2689",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -6789,7 +7645,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1147",
               "format": "none",
               "label": "qlen",
               "logBase": 1,
@@ -6798,7 +7653,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1148",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -6822,7 +7676,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 323,
       "panels": [
@@ -6954,7 +7808,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2315",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -6963,7 +7816,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2316",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -7104,7 +7956,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2567",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -7113,7 +7964,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2568",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -7255,7 +8105,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2446",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -7264,7 +8113,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2447",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -7403,7 +8251,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2688",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -7412,7 +8259,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2689",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -7436,7 +8282,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 325,
       "panels": [
@@ -7568,7 +8414,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2315",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -7577,7 +8422,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2316",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -7718,7 +8562,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2567",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -7727,7 +8570,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2568",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -7872,7 +8714,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2446",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -7881,7 +8722,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2447",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -8023,7 +8863,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:2688",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -8032,7 +8871,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:2689",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -8056,7 +8894,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 159,
       "panels": [
@@ -8082,7 +8920,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 12
+            "y": 13
           },
           "hiddenSeries": false,
           "id": 132,
@@ -8111,7 +8949,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8195,7 +9033,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:10752",
               "format": "none",
               "label": "",
               "logBase": 1,
@@ -8204,7 +9041,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:10753",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -8239,7 +9075,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 19
+            "y": 20
           },
           "hiddenSeries": false,
           "id": 192,
@@ -8268,7 +9104,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8352,7 +9188,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:11132",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -8361,7 +9196,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:11133",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -8396,7 +9230,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 26
+            "y": 27
           },
           "hiddenSeries": false,
           "id": 195,
@@ -8425,7 +9259,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8509,7 +9343,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:12092",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -8518,7 +9351,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:12093",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -8554,7 +9386,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 33
+            "y": 34
           },
           "hiddenSeries": false,
           "id": 313,
@@ -8583,7 +9415,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8667,7 +9499,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:12216",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -8676,7 +9507,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:12217",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -8711,7 +9541,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 40
+            "y": 41
           },
           "hiddenSeries": false,
           "id": 338,
@@ -8740,7 +9570,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion": "7.3.7",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -8824,7 +9654,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:10752",
               "format": "none",
               "label": "qlen",
               "logBase": 1,
@@ -8833,7 +9662,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:10753",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -8857,7 +9685,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 13
       },
       "id": 307,
       "panels": [
@@ -8996,7 +9824,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:10876",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -9005,7 +9832,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:10877",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -9153,7 +9979,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:11264",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -9162,7 +9987,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:11265",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -9310,7 +10134,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:12092",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -9319,7 +10142,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:12093",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -9468,7 +10290,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:12216",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -9477,7 +10298,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:12217",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -9501,7 +10321,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 14
       },
       "id": 309,
       "panels": [
@@ -9640,7 +10460,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:11004",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -9649,7 +10468,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:11005",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -9797,7 +10615,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:11632",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -9806,7 +10623,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:11633",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -9954,7 +10770,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:12092",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -9963,7 +10778,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:12093",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -10112,7 +10926,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:12216",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -10121,7 +10934,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:12217",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -10145,7 +10957,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 15
       },
       "id": 315,
       "panels": [
@@ -10365,7 +11177,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:19036",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -10373,7 +11184,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:19037",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -10602,7 +11412,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:19036",
               "format": "MBs",
               "logBase": 1,
               "max": null,
@@ -10610,7 +11419,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:19037",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -10793,7 +11601,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:19036",
               "format": "deckbytes",
               "logBase": 1,
               "max": null,
@@ -10801,7 +11608,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:19037",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -11030,7 +11836,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:19036",
               "format": "ms",
               "logBase": 1,
               "max": null,
@@ -11038,7 +11843,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:19037",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -11062,7 +11866,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 16
       },
       "id": 146,
       "panels": [
@@ -11195,7 +11999,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -11204,7 +12007,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -11346,7 +12148,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -11355,7 +12156,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -11497,7 +12297,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -11506,7 +12305,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -11648,7 +12446,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -11657,7 +12454,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -11799,7 +12595,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "none",
               "label": "",
               "logBase": 1,
@@ -11808,7 +12603,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -11832,7 +12626,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "id": 335,
       "panels": [
@@ -11965,7 +12759,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -11974,7 +12767,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -12116,7 +12908,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -12125,7 +12916,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -12267,7 +13057,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -12276,7 +13065,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -12418,7 +13206,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -12427,7 +13214,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -12451,7 +13237,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 18
       },
       "id": 337,
       "panels": [
@@ -12584,7 +13370,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -12593,7 +13378,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -12735,7 +13519,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -12744,7 +13527,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -12886,7 +13668,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "deckbytes",
               "label": "",
               "logBase": 1,
@@ -12895,7 +13676,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -13037,7 +13817,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:24453",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -13046,7 +13825,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:24454",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -13070,7 +13848,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "id": 353,
       "panels": [
@@ -13292,7 +14070,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:29787",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -13300,7 +14077,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:29788",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -13529,7 +14305,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:30358",
               "format": "MBs",
               "logBase": 1,
               "max": null,
@@ -13537,7 +14312,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:30359",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -13721,7 +14495,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:32839",
               "format": "deckbytes",
               "logBase": 1,
               "max": null,
@@ -13729,7 +14502,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:32840",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -13753,7 +14525,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "id": 208,
       "panels": [
@@ -13890,7 +14662,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1758",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -13898,7 +14669,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1759",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -14044,7 +14814,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:3362",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -14053,7 +14822,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:3363",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -14205,7 +14973,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:978",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -14214,7 +14981,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:979",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -14366,7 +15132,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:1886",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -14375,7 +15140,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:1887",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -14516,7 +15280,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:665",
               "format": "none",
               "label": "qlen",
               "logBase": 1,
@@ -14525,7 +15288,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:666",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -14549,7 +15311,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 21
       },
       "id": 360,
       "panels": [
@@ -14694,7 +15456,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:34840",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -14702,7 +15463,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:34841",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -14853,7 +15613,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:35074",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -14862,7 +15621,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:35075",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -15013,7 +15771,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:35852",
               "format": "deckbytes",
               "label": "Service Times (ms)",
               "logBase": 1,
@@ -15022,7 +15779,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:35853",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -15173,7 +15929,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:36647",
               "format": "ms",
               "label": "Service Times (ms)",
               "logBase": 1,
@@ -15182,7 +15937,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:36648",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -15206,7 +15960,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 22
       },
       "id": 362,
       "panels": [
@@ -15351,7 +16105,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:34840",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -15359,7 +16112,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:34841",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -15510,7 +16262,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:35074",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -15519,7 +16270,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:35075",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -15670,7 +16420,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:35852",
               "format": "deckbytes",
               "label": "Service Times (ms)",
               "logBase": 1,
@@ -15679,7 +16428,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:35853",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -15830,7 +16578,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:36647",
               "format": "ms",
               "label": "Service Times (ms)",
               "logBase": 1,
@@ -15839,7 +16586,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:36648",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -15863,7 +16609,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 23
       },
       "id": 364,
       "panels": [
@@ -16008,7 +16754,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:34840",
               "format": "iops",
               "logBase": 1,
               "max": null,
@@ -16016,7 +16761,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:34841",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -16167,7 +16911,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:35074",
               "format": "MBs",
               "label": "",
               "logBase": 1,
@@ -16176,7 +16919,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:35075",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -16327,7 +17069,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:35852",
               "format": "deckbytes",
               "label": "Service Times (ms)",
               "logBase": 1,
@@ -16336,7 +17077,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:35853",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -16487,7 +17227,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:36647",
               "format": "ms",
               "label": "Service Times (ms)",
               "logBase": 1,
@@ -16496,7 +17235,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:36648",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -16520,7 +17258,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 91,
       "panels": [
@@ -16671,7 +17409,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:38370",
               "format": "iops",
               "label": "",
               "logBase": 1,
@@ -16680,7 +17417,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:38371",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -16851,7 +17587,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:38631",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -16860,7 +17595,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:38632",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -17019,7 +17753,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:38631",
               "format": "ms",
               "label": "",
               "logBase": 1,
@@ -17028,7 +17761,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:38632",
               "format": "none",
               "logBase": 1,
               "max": null,
@@ -17052,7 +17784,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 25
       },
       "id": 287,
       "panels": [
@@ -17579,7 +18311,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "iops",
               "label": null,
               "logBase": 1,
@@ -17588,7 +18319,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -17730,7 +18460,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "MBs",
               "label": null,
               "logBase": 1,
@@ -17739,7 +18468,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -17881,7 +18609,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "decmbytes",
               "label": null,
               "logBase": 1,
@@ -17890,7 +18617,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -18032,7 +18758,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -18041,7 +18766,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -18183,7 +18907,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "ms",
               "label": null,
               "logBase": 1,
@@ -18192,7 +18915,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -18334,7 +19056,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "none",
               "label": null,
               "logBase": 1,
@@ -18343,7 +19064,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -18485,7 +19205,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "ms",
               "label": null,
               "logBase": 1,
@@ -18494,7 +19213,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -18636,7 +19354,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:6530",
               "format": "none",
               "label": null,
               "logBase": 1,
@@ -18645,7 +19362,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:6531",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -18670,7 +19386,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 26
       },
       "id": 233,
       "panels": [
@@ -18803,7 +19519,6 @@
           },
           "yaxes": [
             {
-              "$$hashKey": "object:39804",
               "format": "iops",
               "label": null,
               "logBase": 1,
@@ -18812,7 +19527,6 @@
               "show": true
             },
             {
-              "$$hashKey": "object:39805",
               "format": "short",
               "label": null,
               "logBase": 1,
@@ -19557,7 +20271,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 27
       },
       "id": 246,
       "panels": [
@@ -20330,7 +21044,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 28
       },
       "id": 248,
       "panels": [
@@ -21073,7 +21787,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 29
       },
       "id": 255,
       "panels": [
@@ -21816,7 +22530,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 30
       },
       "id": 218,
       "panels": [
@@ -21981,7 +22695,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "",
           "value": ""
         },
@@ -22003,7 +22717,7 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
@@ -22034,5 +22748,5 @@
   "timezone": "browser",
   "title": "3Par Performance v3",
   "uid": "3ParPerfv3",
-  "version": 3
+  "version": 8
 }

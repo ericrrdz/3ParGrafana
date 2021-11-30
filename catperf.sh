@@ -15,3 +15,5 @@ cat Perf.*/statiscsi-fullcounts*.out > perf_`date +%Y%m%d`/statiscsi-fullcounts.
 cat Perf.*/statiscsisession*.out > perf_`date +%Y%m%d`/statiscsisession.out
 cat Perf.*/statld*.out > perf_`date +%Y%m%d`/statld.out
 cat Perf.*/statqos*.out > perf_`date +%Y%m%d`/statqos.out
+cat Perf.*/histpd*.out > perf_`date +%Y%m%d`/histpd.out
+cat Perf.*/histvlun*.out > perf_`date +%Y%m%d`/histvlun.out

@@ -14,7 +14,7 @@ do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-
 done
 
 echo "Processing DelAck counters"
-statcmp_parse.awk statcmp* |split -l 500000 - cmp_
+statcmp_parse.awk statcmp* |grep -v -e "---" |split -l 500000 - cmp_
 echo "Uploading DelAck data to database $dbname"
 for cmp in cmp_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$cmp

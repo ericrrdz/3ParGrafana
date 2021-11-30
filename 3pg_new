@@ -17,7 +17,7 @@ do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-
 done
 
 echo "Processing DelAck counters"
-statcmp_parse.awk statcmp* |split -l 500000 - cmp_
+statcmp_parse.awk statcmp* |grep -v -e "---" |split -l 500000 - cmp_
 echo "Uploading DelAck data to database $dbname"
 for cmp in cmp_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$cmp
@@ -75,5 +75,20 @@ for qos in qos_*;
 do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$qos
 done
 
+echo "Processing histvlun data"
+histvlun_parse.awk histvlun* |split -l 500000 - hv_
+echo "Uploading histvlun data to database $dbname"
+for hv in hv_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$hv
+done
+
+echo "Processing histpd data"
+histpd_parse.awk histpd* |split -l 500000 - hp_
+echo "Uploading histpd data to database $dbname"
+for hp in hp_*;
+do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$hp
+done
+
+
 echo "cleaning up..."
-rm pd_* cpu_* diskport hostport vv_* vlun_* iscsi_* cmp_* rcvv_* qos_*
+rm pd_* cpu_* diskport hostport vv_* vlun_* iscsi_* cmp_* rcvv_* qos_* hv_* hp_*

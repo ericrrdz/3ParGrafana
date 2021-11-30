@@ -1,37 +1,4 @@
 {
-  "__inputs": [],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.4.2"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "influxdb",
-      "name": "InfluxDB",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -41,16 +8,25 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
+  "description": "Charting 3Par performance data with Grafana",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 13789,
   "graphTooltip": 1,
-  "id": null,
-  "iteration": 1613764781391,
+  "id": 80,
+  "iteration": 1638292013201,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": true,
@@ -2816,7 +2792,7 @@
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "7.3.5",
+          "pluginVersion ": "7.3.5",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -22623,19 +22599,1645 @@
       "repeat": null,
       "title": "iSCSI Counters",
       "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 387,
+      "panels": [
+        {
+          "datasource": "${DS}",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "min": 1,
+              "noValue": "-",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "101"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": ".25ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "102"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": ".50ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "103"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "104"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "105"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "106"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "107"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "108"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "32ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "109"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "64ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "110"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "128ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "111"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "256ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "112"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "113"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1024ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "114"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2048ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "115"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4096ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "116"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8192ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "117"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16384ms"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 33
+          },
+          "id": 389,
+          "options": {
+            "displayMode": "lcd",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "text": {}
+          },
+          "pluginVersion": "8.2.3",
+          "targets": [
+            {
+              "alias": "[[tag_type]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "VlunHistTime",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"VlunHistTime\" WHERE (\"op\" = 'r') AND $timeFilter GROUP BY time($__interval), \"type\" fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "op",
+                  "operator": "=",
+                  "value": "r"
+                }
+              ]
+            }
+          ],
+          "title": "Read Service Times (histvlun)",
+          "transparent": true,
+          "type": "bargauge"
+        },
+        {
+          "datasource": "${DS}",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "min": 1,
+              "noValue": "-",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "101"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": ".25ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "102"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": ".50ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "103"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "104"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "105"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "106"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "107"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "108"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "32ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "109"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "64ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "110"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "128ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "111"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "256ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "112"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "113"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1024ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "114"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2048ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "115"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4096ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "116"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8192ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "117"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16384ms"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 42
+          },
+          "id": 390,
+          "options": {
+            "displayMode": "lcd",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "text": {}
+          },
+          "pluginVersion": "8.2.3",
+          "targets": [
+            {
+              "alias": "[[tag_type]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "VlunHistTime",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"VlunHistTime\" WHERE (\"op\" = 'r') AND $timeFilter GROUP BY time($__interval), \"type\" fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "op",
+                  "operator": "=",
+                  "value": "w"
+                }
+              ]
+            }
+          ],
+          "title": "Write Service Times (histvlun)",
+          "transparent": true,
+          "type": "bargauge"
+        },
+        {
+          "datasource": "${DS}",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "min": 1,
+              "noValue": "-",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "201"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "202"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "203"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "204"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "205"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "206"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "207"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "32k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "208"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "64k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "209"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "128k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "210"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "256k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "211"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "212"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "213"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "214"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "215"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "216"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16m"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 51
+          },
+          "id": 391,
+          "options": {
+            "displayMode": "lcd",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "text": {}
+          },
+          "pluginVersion": "8.2.3",
+          "targets": [
+            {
+              "alias": "[[tag_type]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "VlunHistSize",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"VlunHistTime\" WHERE (\"op\" = 'r') AND $timeFilter GROUP BY time($__interval), \"type\" fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "op",
+                  "operator": "=",
+                  "value": "r"
+                }
+              ]
+            }
+          ],
+          "title": "Read IO Size (histvlun)",
+          "transparent": true,
+          "type": "bargauge"
+        },
+        {
+          "datasource": "${DS}",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "min": 1,
+              "noValue": "-",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "201"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "202"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "203"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "204"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "205"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "206"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "207"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "32k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "208"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "64k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "209"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "128k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "210"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "256k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "211"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "212"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "213"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "214"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "215"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8m"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "216"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16m"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 60
+          },
+          "id": 392,
+          "options": {
+            "displayMode": "lcd",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "text": {}
+          },
+          "pluginVersion": "8.2.3",
+          "targets": [
+            {
+              "alias": "[[tag_type]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "VlunHistSize",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"VlunHistTime\" WHERE (\"op\" = 'r') AND $timeFilter GROUP BY time($__interval), \"type\" fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "op",
+                  "operator": "=",
+                  "value": "w"
+                }
+              ]
+            }
+          ],
+          "title": "Write IO Size (histvlun)",
+          "transparent": true,
+          "type": "bargauge"
+        }
+      ],
+      "title": "histvlun",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 32
+      },
+      "id": 394,
+      "panels": [
+        {
+          "datasource": "${DS}",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "min": 1,
+              "noValue": "-",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "101"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "102"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "103"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "104"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "105"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "32ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "106"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "64ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "107"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "128ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "108"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "256ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "109"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512ms"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "110"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1s"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "111"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "2s"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "112"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4s"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "113"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8s"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 396,
+          "options": {
+            "displayMode": "lcd",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "text": {}
+          },
+          "pluginVersion": "8.2.3",
+          "targets": [
+            {
+              "alias": "[[tag_type]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "PdHistTime",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"VlunHistTime\" WHERE (\"op\" = 'r') AND $timeFilter GROUP BY time($__interval), \"type\" fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Service Times (histpd)",
+          "transparent": true,
+          "type": "bargauge"
+        },
+        {
+          "datasource": "${DS}",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "mappings": [],
+              "min": 1,
+              "noValue": "-",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "201"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "4k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "202"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "8k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "203"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "16k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "204"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "32k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "205"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "64k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "206"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "128k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "207"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "256k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "208"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "512k"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "209"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "1m"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 10
+          },
+          "id": 397,
+          "options": {
+            "displayMode": "lcd",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": [
+                "sum"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showUnfilled": true,
+            "text": {}
+          },
+          "pluginVersion": "8.2.3",
+          "targets": [
+            {
+              "alias": "[[tag_type]]",
+              "groupBy": [
+                {
+                  "params": [
+                    "type"
+                  ],
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "PdHistSize",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "SELECT mean(\"value\") FROM \"VlunHistTime\" WHERE (\"op\" = 'r') AND $timeFilter GROUP BY time($__interval), \"type\" fill(null)",
+              "rawQuery": false,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "sum"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "IO Size (histpd)",
+          "transparent": true,
+          "type": "bargauge"
+        }
+      ],
+      "title": "histpd",
+      "type": "row"
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": "",
-          "value": ""
+          "selected": false,
+          "text": "Perf Glance",
+          "value": "Perf Glance"
         },
         "datasource": null,
         "description": null,
@@ -22685,7 +24287,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "3Par Performance v3",
-  "uid": "3ParPerfv3",
+  "title": "3Par Performance v4",
+  "uid": "3ParPerfv4",
   "version": 7
 }

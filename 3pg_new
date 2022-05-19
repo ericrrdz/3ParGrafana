@@ -9,14 +9,6 @@ read -p  'Enter Short Customer Nickname (no spaces): ' dbname
 echo "Creating database $dbname"
 influx -execute "CREATE DATABASE $dbname"
 
-curl -X POST --insecure -H "Authorization: Bearer eyJrIjoiTjNtMWhwTWVWdmJFdElFQ0NFQVRHRFM3cWNiVEtoVE0iLCJuIjoiY3JlYXRlZGIiLCJpZCI6MX0=" -H "Content-Type: application/json" -d '{
-"name": "'$dbname'",
-"type": "influxdb",
-"url": "http://localhost:8086",
-"database": "'$dbname'",
-"access": "proxy"
-}' http://localhost:3000/api/datasources > /dev/null
-
 echo "Processing CPU counters"
 statcpu_parse.awk statcpu* |split -l 500000 - cpu_
 echo "Uploading CPU data to database $dbname"

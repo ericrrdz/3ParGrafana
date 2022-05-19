@@ -1,76 +1,91 @@
+cat 3pg_add
 #!/bin/bash
 echo "Use this script if appending to existing database."
 
 read -p  'Enter DB Name: ' dbname
 
-echo "Converting files"
-dos2unix *
+# echo "Converting files"
+# dos2unix * > /dev/null
 
 echo "Processing CPU counters"
 statcpu_parse.awk statcpu* |split -l 500000 - cpu_
 echo "Uploading CPU data to database $dbname"
 for cpu in cpu_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$cpu
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$cpu > /dev/null
 done
 
 echo "Processing DelAck counters"
-statcmp_parse.awk statcmp* |grep -v -e "---" |split -l 500000 - cmp_
+statcmp_parse.awk statcmp* |split -l 500000 - cmp_
 echo "Uploading DelAck data to database $dbname"
 for cmp in cmp_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$cmp
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$cmp > /dev/null
 done
 
 echo "Processing iscsi counters"
 statiscsifull_parse.awk statiscsi-full* |split -l 500000 - iscsi_
 echo "Uploading iSCSI data to database $dbname"
 for iscsi in iscsi_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$iscsi
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$iscsi > /dev/null
 done
 
 echo "Processing Host Port data"
 statport-host_parse.awk statport*host* > hostport
 echo "Uploading Host Port data to database $dbname"
-curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @hostport
+curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @hostport > /dev/null
 
 echo "Processing Disk Port data"
 statport-disk_parse.awk statport*disk* > diskport
 echo "Uploading Disk Port data to database $dbname"
-curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @diskport
+curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @diskport > /dev/null
 
 echo "Processing PD data"
 statpd_parse.awk statpd* |split -l 500000 - pd_
 echo "Uploading PD data to database $dbname"
 for pd in pd_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$pd
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$pd > /dev/null
 done
 
 echo "Processing VV data"
 statvv_parse.awk statvv* |split -l 500000 - vv_
 echo "Uploading VV data to database $dbname"
 for vv in vv_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vv
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$vv > /dev/null
 done
 
 echo "Processing VLUN data"
 statvlun_parse.awk statvlun* |split -l 500000 - vlun_
 echo "Uploading VLUN data to database $dbname"
 for vlun in vlun_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$vlun
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$vlun > /dev/null
 done
 
 echo "Processing RCVV data"
 statrcvv_parse.awk statrcvv* |split -l 500000 - rcvv_
 echo "Uploading RCVV data to database $dbname"
 for rcvv in rcvv_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$rcvv
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$rcvv > /dev/null
 done
 
 echo "Processing QoS data"
 statqos_parse.awk statqos* |split -l 500000 - qos_
 echo "Uploading QoS data to database $dbname"
 for qos in qos_*;
-do curl -i -XPOST 'http://127.0.0.1:8086/write?db='$dbname'&precision=s' --data-binary @$qos
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$qos > /dev/null
+done
+
+echo "Processing histvlun data"
+histvlun_parse.awk histvlun* |grep -v "value=0" |split -l 500000 - hv_
+echo "Uploading histvlun data to database $dbname"
+for hv in hv_*;
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$hv > /dev/null
+done
+
+echo "Processing histpd data"
+histpd_parse.awk histpd* |grep -v "value=0" |split -l 500000 - hp_
+echo "Uploading histpd data to database $dbname"
+for hp in hp_*;
+do curl -i -XPOST 'http://localhost:8086/write?db='$dbname'&precision=s' --data-binary @$hp > /dev/null
 done
 
 echo "cleaning up..."
-rm cpu_* pd_* diskport hostport vv_* vlun_* iscsi_* cmp_* rcvv_* qos_*
+rm pd_* cpu_* diskport hostport vv_* vlun_* iscsi_* cmp_* rcvv_* qos_* hv_* hp_* 2>/dev/null

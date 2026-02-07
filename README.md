@@ -1,30 +1,22 @@
-The following awk scripts will assist in parsing stats data collected from 3par array. <br>
+The following bash scripts will assist in parsing performance data collected from HPE 3par/Primera/Alletra 9k/Alletra MP arrays. <br>
+The scripts will also create corresponding influxdb and grafana data source. Edit script with detals for your environment.
 <br>
-Stats data can be captured from array using stats* commands and outputting to a file.<br>
+influxdb, grafana, curl and gawk will need to be installed.
 <br>
-cli% statcmp > statcmp.out<br>
+For perfanal data (Settings > Telemetry > Collect Support Data > Actions > Collect Performance Analysis
 <br>
-awk scripts can be run against the out file.<br>
-Syntax:<br>
-statcmp_parse.awk statcmp.out > cmpinfo<br>
-statpd_parse.awk statpd.out > pdinfo<br>
-statport-disk_parse.awk statport-disk.out > diskportinfo<br>
-statport-host_parse.awk statport-host.out > hostportinfo<br>
-statvlun_parse.awk statvlun.out > vluninfo<br>
-statvv_parse.awk statvv.out > vvinfo<br>
-etc,etc<br>
+From directory where Perf.* directories reside, run 3pg_perfanal.sh
 <br>
-The files outputted above can then be fed to influxdb using cURL:<br>
-/usr/bin/curl -i -XPOST 'http://127.0.0.1:8086/write?db=test&precision=s' --data-binary @cmpinfo<br>
-/usr/bin/curl -i -XPOST 'http://127.0.0.1:8086/write?db=test&precision=s' --data-binary @pdinfo<br>
-/usr/bin/curl -i -XPOST 'http://127.0.0.1:8086/write?db=test&precision=s' --data-binary @diskportinfo<br>
-/usr/bin/curl -i -XPOST 'http://127.0.0.1:8086/write?db=test&precision=s' --data-binary @hostportinfo<br>
-/usr/bin/curl -i -XPOST 'http://127.0.0.1:8086/write?db=test&precision=s' --data-binary @vluninfo<br>
-/usr/bin/curl -i -XPOST 'http://127.0.0.1:8086/write?db=test&precision=s' --data-binary @vvinfo<br>
+3pg_perfanal.sh -n for new influxdb instance
 <br>
-Depending on size of out files, some influxdb settings (max-body-size, timeouts, max-series-per-database) in /etc/influxdb/influxdb.conf may have to be modified. <br>
+3pg_perfanal.sh -a to add to an existing influxdb instance.
 <br>
-The above can be automated using 3pg_new & 3pg_add scripts. 3pg_new will create new influx DB & 3pg_add will add to an existing influx DB. Both will prompt for name of DB upon running
-
+Run from directory where Perf.* directories reside
 <br>
-
+e.g:
+<br>
+3pg_perfanal.sh -n .
+<br>
+For srdata, unpack srdata tarballs and run 3pg_sr.sh from hires directory.
+<br>
+3pg_sr.sh -n .

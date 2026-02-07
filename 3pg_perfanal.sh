@@ -211,15 +211,18 @@ cat << 'AWK_EOF' > "$PARSER_DIR/statqos_parse.awk"
    }
  }
 }
-AWK_EOF
 
+AWK_EOF
 # --- 11. StatRCVV Parser ---
 cat << 'AWK_EOF' > "$PARSER_DIR/statrcvv_parse.awk"
 #!/usr/bin/awk -f
 {
  if(($0 ~ /KBytes/)&& gsub(/\//," ") && gsub(/:/," ")) {ts=mktime($6" "$4" "$5" "$1" "$2" "$3)}
  if ((NF==18)&&($1!="VVname")&&($7>0)) {
-   prefix="RCVV="$1,"RCGroup="$2,"Target="$3,"Mode="$4,"Port="$5,"RcType="$6;
+   # FIX: Removed syntax-error commas between fields. 
+   # Added commas INSIDE quotes to form the tag set string.
+   prefix="RCVV="$1",RCGroup="$2",Target="$3",Mode="$4",Port="$5",RcType="$6
+   
    printf("RcVvIo,%s,%s\n",prefix,"type=iocur value="$7" "ts);
    printf("RcVvIo,%s,%s\n",prefix,"type=ioavg value="$8" "ts);
    printf("RcVvIo,%s,%s\n",prefix,"type=iomax value="$9" "ts);

@@ -83,39 +83,6 @@ else
 fi
 
 # ---------------------------------------------------------
-# Create Grafana Data Source
-# ---------------------------------------------------------
-if [ "$ANY_UPLOAD_SUCCESS" = true ]; then
-    echo "------------------------------------------------"
-    echo "Creating Grafana Data Source..."
-
-    if [ -n "$GRAFANA_HOST" ] && [ -n "$GRAFANA_TOKEN" ]; then
-        GF_RESPONSE=$(curl --noproxy '*' --insecure --silent --write-out "HTTPSTATUS:%{http_code}" \
-            -X POST \
-            -H "Authorization: Bearer $GRAFANA_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{
-                "name": "'$dbname'",
-                "type": "influxdb",
-                "url": "'$GRAFANA_INFLUX_URL'",
-                "database": "'$dbname'",
-                "access": "proxy"
-            }' \
-            "$GRAFANA_HOST/api/datasources")
-
-        GF_STATUS=$(echo $GF_RESPONSE | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
-
-        if [ "$GF_STATUS" -eq 200 ]; then
-            echo "Success: Grafana Data Source '$dbname' created."
-        elif [ "$GF_STATUS" -eq 409 ]; then
-             echo "Info: Grafana Data Source '$dbname' already exists."
-        else
-            echo "Warning: Failed to create Grafana Data Source (HTTP $GF_STATUS)"
-        fi
-    fi
-fi
-
-# ---------------------------------------------------------
 # HELPER: Tag Definitions
 # ---------------------------------------------------------
 get_tags_for_table() {
@@ -277,6 +244,39 @@ else
     # Single file processing
     process_sqlite_file "$INPUT_PATH"
     if [ $? -eq 0 ]; then ANY_UPLOAD_SUCCESS=true; fi
+fi
+
+# ---------------------------------------------------------
+# Create Grafana Data Source
+# ---------------------------------------------------------
+if [ "$ANY_UPLOAD_SUCCESS" = true ]; then
+    echo "------------------------------------------------"
+    echo "Creating Grafana Data Source..."
+
+    if [ -n "$GRAFANA_HOST" ] && [ -n "$GRAFANA_TOKEN" ]; then
+        GF_RESPONSE=$(curl --noproxy '*' --insecure --silent --write-out "HTTPSTATUS:%{http_code}" \
+            -X POST \
+            -H "Authorization: Bearer $GRAFANA_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{
+                "name": "'$dbname'",
+                "type": "influxdb",
+                "url": "'$GRAFANA_INFLUX_URL'",
+                "database": "'$dbname'",
+                "access": "proxy"
+            }' \
+            "$GRAFANA_HOST/api/datasources")
+
+        GF_STATUS=$(echo $GF_RESPONSE | tr -d '\n' | sed -e 's/.*HTTPSTATUS://')
+
+        if [ "$GF_STATUS" -eq 200 ]; then
+            echo "Success: Grafana Data Source '$dbname' created."
+        elif [ "$GF_STATUS" -eq 409 ]; then
+             echo "Info: Grafana Data Source '$dbname' already exists."
+        else
+            echo "Warning: Failed to create Grafana Data Source (HTTP $GF_STATUS)"
+        fi
+    fi
 fi
 
 echo "All tasks finished."

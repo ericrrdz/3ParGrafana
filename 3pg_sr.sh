@@ -130,7 +130,7 @@ process_sqlite_file() {
             
             # Initialize special column indices
             idx_pn = 0; idx_ps = 0; idx_pp = 0;
-            idx_pt = 0; idx_gb = 0;
+            idx_pt = 0; idx_gb = 0; idx_tt = 0;
 
             # Whitelist: fields to keep even if value is 0
             whitelist_str = "begin_msec,now_msec,rerror,rdrops,rticks,werror,wdrops,wticks,GBITPS"
@@ -150,6 +150,7 @@ process_sqlite_file() {
                 
                 # Identify Extra Tags (statport specific)
                 if ($i == "PORT_TYPE") idx_pt = i;
+                if ($i == "TRANS_TYPE") idx_tt = i;
                 if ($i == "GBITPS") idx_gb = i;
             }
             next;
@@ -181,6 +182,13 @@ process_sqlite_file() {
                 tag_string = tag_string ",PORT_TYPE=" val
             }
 
+            # TRANS_TYPE Logic
+            if (idx_tt > 0) {
+                val = $idx_tt
+                gsub(/ /, "\\ ", val);
+                tag_string = tag_string ",TRANS_TYPE=" val
+            }
+
             # GBITPS Logic
             if (idx_gb > 0) {
                 val = $idx_gb
@@ -197,7 +205,8 @@ process_sqlite_file() {
                 # Skips
                 if (i == time_col || header in is_tag) continue;
                 if (i == idx_pn || i == idx_ps || i == idx_pp) continue;
-                if (i == idx_pt || i == idx_gb) continue; # Skip Extra Tags in values
+                # Skip Extra Tags in values
+                if (i == idx_pt || i == idx_gb || i == idx_tt) continue; 
 
                 if (value == "" || value == "-") continue;
                 if ((value == "0" || value == "0.0") && !(header in keep_zeros)) continue;
@@ -281,7 +290,7 @@ else
 fi
 
 # ---------------------------------------------------------
-# Create Grafana Data Source
+# Grafana Data Source (Run Once at End)
 # ---------------------------------------------------------
 if [ "$ANY_UPLOAD_SUCCESS" = true ]; then
     echo "------------------------------------------------"

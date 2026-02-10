@@ -51,7 +51,7 @@ fi
 # ---------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------
-INFLUX_HOST="c3-dl360pg8-300"
+INFLUX_HOST="<HOSTNAME>"
 INFLUX_PORT="8086"
 INFLUX_URL="http://${INFLUX_HOST}:${INFLUX_PORT}"
 OUTPUT_FILE="influx_payload.lp"
@@ -127,7 +127,12 @@ process_sqlite_file() {
         BEGIN {
             split(tags, t_array, ",");
             for (i in t_array) is_tag[t_array[i]] = 1;
+            
+            # Initialize indices for special columns
             idx_pn = 0; idx_ps = 0; idx_pp = 0;
+            idx_pt = 0; idx_gb = 0;
+
+            # Whitelist: fields to keep even if value is 0
             whitelist_str = "begin_msec,now_msec,rerror,rdrops,rticks,werror,wdrops,wticks"
             split(whitelist_str, wl_array, ",");
             for (i in wl_array) keep_zeros[wl_array[i]] = 1;
@@ -137,9 +142,15 @@ process_sqlite_file() {
                 gsub(/^"|"$/, "", $i);
                 col_name[i] = $i;
                 if (tolower($i) == "tsecs") time_col = i;
+                
+                # Identify Aggregation Columns
                 if ($i == "PORT_N") idx_pn = i;
                 if ($i == "PORT_S") idx_ps = i;
                 if ($i == "PORT_P") idx_pp = i;
+                
+                # Identify Extra Tags
+                if ($i == "PORT_TYPE") idx_pt = i;
+                if ($i == "GBITPS") idx_gb = i;
             }
             next;
         }
@@ -157,9 +168,23 @@ process_sqlite_file() {
                     tag_string = tag_string "," col_name[i] "=" val
                 }
             }
-            # Host Port Logic
+            
+            # DATA_PORT Logic (Aggregated Port)
             if (idx_pn > 0 && idx_ps > 0 && idx_pp > 0) {
-                tag_string = tag_string ",HOST_PORT=" $idx_pn ":" $idx_ps ":" $idx_pp
+                tag_string = tag_string ",DATA_PORT=" $idx_pn ":" $idx_ps ":" $idx_pp
+            }
+
+            # PORT_TYPE Tag Logic
+            if (idx_pt > 0) {
+                val = $idx_pt
+                gsub(/ /, "\\ ", val);
+                tag_string = tag_string ",PORT_TYPE=" val
+            }
+
+            # GBITPS Tag Logic
+            if (idx_gb > 0) {
+                val = $idx_gb
+                tag_string = tag_string ",GBITPS=" val
             }
 
             timestamp = (time_col) ? $time_col : "";
@@ -169,8 +194,11 @@ process_sqlite_file() {
                 header = col_name[i];
                 value = $i;
 
+                # Skip conditions
                 if (i == time_col || header in is_tag) continue;
                 if (i == idx_pn || i == idx_ps || i == idx_pp) continue;
+                if (i == idx_pt || i == idx_gb) continue; # Skip Extra Tags in values
+                
                 if (value == "" || value == "-") continue;
                 if ((value == "0" || value == "0.0") && !(header in keep_zeros)) continue;
 
@@ -219,7 +247,6 @@ ANY_UPLOAD_SUCCESS=false
 
 if [ -d "$INPUT_PATH" ]; then
     echo "Target is a directory. Processing all .db files in '$INPUT_PATH'..."
-    # Enable nullglob so loop doesn't run if no matches
     shopt -s nullglob
     for f in "$INPUT_PATH"/*.db; do
         process_sqlite_file "$f"

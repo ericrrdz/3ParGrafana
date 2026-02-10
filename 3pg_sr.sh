@@ -128,12 +128,12 @@ process_sqlite_file() {
             split(tags, t_array, ",");
             for (i in t_array) is_tag[t_array[i]] = 1;
             
-            # Initialize indices for special columns
+            # Initialize special column indices
             idx_pn = 0; idx_ps = 0; idx_pp = 0;
             idx_pt = 0; idx_gb = 0;
 
             # Whitelist: fields to keep even if value is 0
-            whitelist_str = "begin_msec,now_msec,rerror,rdrops,rticks,werror,wdrops,wticks"
+            whitelist_str = "begin_msec,now_msec,rerror,rdrops,rticks,werror,wdrops,wticks,GBITPS"
             split(whitelist_str, wl_array, ",");
             for (i in wl_array) keep_zeros[wl_array[i]] = 1;
         }
@@ -148,7 +148,7 @@ process_sqlite_file() {
                 if ($i == "PORT_S") idx_ps = i;
                 if ($i == "PORT_P") idx_pp = i;
                 
-                # Identify Extra Tags
+                # Identify Extra Tags (statport specific)
                 if ($i == "PORT_TYPE") idx_pt = i;
                 if ($i == "GBITPS") idx_gb = i;
             }
@@ -158,7 +158,7 @@ process_sqlite_file() {
             # Pre-process row to strip quotes
             for (i=1; i<=NF; i++) gsub(/^"|"$/, "", $i);
 
-            # Build Tags
+            # --- BUILD TAGS ---
             tag_string = ""
             for (i=1; i<=NF; i++) {
                 if (col_name[i] in is_tag) {
@@ -169,19 +169,19 @@ process_sqlite_file() {
                 }
             }
             
-            # DATA_PORT Logic (Aggregated Port)
+            # DATA_PORT Logic
             if (idx_pn > 0 && idx_ps > 0 && idx_pp > 0) {
                 tag_string = tag_string ",DATA_PORT=" $idx_pn ":" $idx_ps ":" $idx_pp
             }
 
-            # PORT_TYPE Tag Logic
+            # PORT_TYPE Logic
             if (idx_pt > 0) {
                 val = $idx_pt
                 gsub(/ /, "\\ ", val);
                 tag_string = tag_string ",PORT_TYPE=" val
             }
 
-            # GBITPS Tag Logic
+            # GBITPS Logic
             if (idx_gb > 0) {
                 val = $idx_gb
                 tag_string = tag_string ",GBITPS=" val
@@ -189,30 +189,51 @@ process_sqlite_file() {
 
             timestamp = (time_col) ? $time_col : "";
 
-            # Build Fields
+            # --- AGGREGATION LOGIC ---
             for (i=1; i<=NF; i++) {
                 header = col_name[i];
                 value = $i;
 
-                # Skip conditions
+                # Skips
                 if (i == time_col || header in is_tag) continue;
                 if (i == idx_pn || i == idx_ps || i == idx_pp) continue;
                 if (i == idx_pt || i == idx_gb) continue; # Skip Extra Tags in values
-                
+
                 if (value == "" || value == "-") continue;
                 if ((value == "0" || value == "0.0") && !(header in keep_zeros)) continue;
 
-                if (value ~ /^[+-]?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?$/) {
-                    field_key = "value"; field_val = value;
-                } else {
-                    gsub(/"/, "\\\"", value);
-                    field_key = "value_str"; field_val = "\"" value "\"";
-                }
+                # Generate Unique Key
+                # Key = Timestamp + Tags + FieldName
+                key = timestamp SUBSEP tag_string SUBSEP header
 
-                if (timestamp != "") {
-                    printf "%s%s,type=%s %s=%s %s\n", measurement, tag_string, header, field_key, field_val, timestamp
+                # Check Type
+                if (value ~ /^[+-]?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?$/) {
+                    # Numeric: SUM IT
+                    agg_val[key] += value
+                    agg_type[key] = "value"
                 } else {
-                    printf "%s%s,type=%s %s=%s\n", measurement, tag_string, header, field_key, field_val
+                    # String: OVERWRITE IT (Last value wins)
+                    gsub(/"/, "\\\"", value);
+                    agg_val[key] = "\"" value "\""
+                    agg_type[key] = "value_str"
+                }
+            }
+        }
+        END {
+            # --- OUTPUT ---
+            # Print Aggregated Results
+            for (key in agg_val) {
+                split(key, parts, SUBSEP)
+                ts = parts[1]
+                tgs = parts[2]
+                fld = parts[3]
+                val = agg_val[key]
+                f_key = agg_type[key]
+
+                if (ts != "") {
+                    printf "%s%s,type=%s %s=%s %s\n", measurement, tgs, fld, f_key, val, ts
+                } else {
+                    printf "%s%s,type=%s %s=%s\n", measurement, tgs, fld, f_key, val
                 }
             }
         }' >> "$OUTPUT_FILE"

@@ -51,15 +51,15 @@ fi
 # ---------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------
-INFLUX_HOST="<INFLUXDB HOSTNAME>"
+INFLUX_HOST="c3-dl360pg8-300"
 INFLUX_PORT="8086"
 INFLUX_URL="http://${INFLUX_HOST}:${INFLUX_PORT}"
 OUTPUT_FILE="influx_payload.lp"
 
 # GRAFANA Config
-GRAFANA_INFLUX_URL="<INFLUXDB HOSTNAME>:8086"
-GRAFANA_HOST="<GRAFANA HOSTNAME>:3000"
-GRAFANA_TOKEN="<GRAFANA TOKEN>"
+GRAFANA_INFLUX_URL="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:8086"
+GRAFANA_HOST="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:3000"
+GRAFANA_TOKEN="glsa_ghRR5ijBXGdiPlz5dNkhDRz5yXi3BJ7r_512b85e5"
 
 # ---------------------------------------------------------
 # User Prompt & DB Setup
@@ -87,19 +87,19 @@ fi
 # ---------------------------------------------------------
 get_tags_for_table() {
     case $1 in
-        cpgspace)  echo "CPG_NAME" ;;
+        cpgspace)  echo "CPG_NAME,DOM_NAME,CPGID,DISK_TYPE" ;;
         statcache) echo "node" ;;
         statcmp)   echo "node" ;;
         statcpu)   echo "NODE,CPU" ;;
-        statpd)    echo "PDID,DISK_TYPE" ;;
+        statpd)    echo "PDID,DISK_TYPE,SPEED" ;;
         statport)  echo "" ;; 
         statqos)   echo "DOM_NAME,QOS_ID" ;;
         statrcopy) echo "TARGET_NAME,LINK_NAME" ;;
         statrcvv)  echo "VV_NAME" ;;
         statvlun)  echo "VV_NAME,LUN,HOST_NAME,HOST_WWN" ;; 
-        statvv)    echo "VV_NAME" ;;
-        sysspace)  echo "DOM_NAME" ;;
-        vvspace)   echo "VV_NAME" ;;
+        statvv)    echo "VV_NAME,VVID,DOM_NAME,WWN,SNP_CPG_NAME,USR_CPG_NAME,PROV_TYPE,VV_TYPE,VVSET_NAME,VVSET_ID,CPGID" ;;
+        sysspace)  echo "DOM_NAME,DISK_TYPE" ;;
+        vvspace)   echo "VV_NAME,DOM_NAME,VVID,BSID,WWN,CPG_NAME,PROV_TYPE,VV_TYPE,VM_NAME,VM_ID,VM_HOST,VVOLSC,COMPR,VVSET_NAME,VVSET_ID,CPGID" ;;
         *)         echo "" ;; 
     esac
 }

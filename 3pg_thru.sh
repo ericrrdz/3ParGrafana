@@ -1,7 +1,7 @@
 #!/bin/bash
-# This command only parses host port throughput data
+
 # ---------------------------------------------------------
-# Usage: ./3pg_thru.sh [-n | -a] <path_to_sqlite_db_OR_directory>
+# Usage: ./3pg_hostport.sh [-n | -a] <path_to_sqlite_db_OR_directory>
 #   -n : New Database (Create DB once, then process all files)
 #   -a : Aggregate (Append to existing DB)
 # ---------------------------------------------------------
@@ -51,15 +51,15 @@ fi
 # ---------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------
-INFLUX_HOST="<INFLUXDB HOSTNAME>"
+INFLUX_HOST="c3-dl360pg8-300"
 INFLUX_PORT="8086"
 INFLUX_URL="http://${INFLUX_HOST}:${INFLUX_PORT}"
 OUTPUT_FILE="influx_payload.lp"
 
 # GRAFANA Config
-GRAFANA_INFLUX_URL="<INFLUXDB HOSTNAME>:8086"
-GRAFANA_HOST="<GRAFANA HOSTNAME>:3000"
-GRAFANA_TOKEN="<GRAFANA TOKEN>"
+GRAFANA_INFLUX_URL="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:8086"
+GRAFANA_HOST="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:3000"
+GRAFANA_TOKEN="glsa_ghRR5ijBXGdiPlz5dNkhDRz5yXi3BJ7r_512b85e5"
 
 # ---------------------------------------------------------
 # User Prompt & DB Setup
@@ -279,4 +279,6 @@ if [ "$ANY_UPLOAD_SUCCESS" = true ]; then
     fi
 fi
 
+
 echo "All tasks finished."
+

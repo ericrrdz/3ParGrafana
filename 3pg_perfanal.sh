@@ -7,14 +7,14 @@
 #   -a : Aggregate (Append to existing DB)
 
 # --- CONFIGURATION ---
-INFLUX_HOST="c3-dl360pg8-300.cxo.storage.hpecorp.net"
+INFLUX_HOST="localhost"
 INFLUX_PORT="8086"
 INFLUX_URL="http://${INFLUX_HOST}:${INFLUX_PORT}"
 
-GRAFANA_HOST="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:3000"
-GRAFANA_INFLUX_URL="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:8086"
+GRAFANA_HOST="http://localhost:3000"
+GRAFANA_INFLUX_URL="http://localhost:8086"
 
-GRAFANA_TOKEN="glsa_ghRR5ijBXGdiPlz5dNkhDRz5yXi3BJ7r_512b85e5"
+GRAFANA_TOKEN="<insert grafana token>"
 MAX_PARALLEL=17  # max concurrent dataset jobs
 
 # Setup Temp Directory

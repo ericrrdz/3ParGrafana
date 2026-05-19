@@ -1,23 +1,38 @@
 #!/bin/bash
 # ---------------------------------------------------------
-# 3PAR SR (SQLite) INFLUX LOADER (Optimized)
+# 3PAR SR (SQLite) INFLUX LOADER
 # ---------------------------------------------------------
 # Usage: ./3pg_sr.sh [-n | -a] <path_to_sqlite_db_OR_directory>
 #   -n : New Database (Create DB & Datasource, then process)
 #   -a : Aggregate (Append to existing DB)
+#
+# Requires the `sqlite_to_lp` helper binary on PATH (or set
+# SQLITE_TO_LP below to its absolute path). The helper replaces
+# the old sqlite3 | awk transformation pipeline and is ~7-10x
+# faster with a fraction of the memory.
 # ---------------------------------------------------------
 
 # ---------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------
-INFLUX_HOST="c3-dl360pg8-300"
+INFLUX_HOST="localhost"
 INFLUX_PORT="8086"
 INFLUX_URL="http://${INFLUX_HOST}:${INFLUX_PORT}"
 
-GRAFANA_INFLUX_URL="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:8086"
-GRAFANA_HOST="http://c3-dl360pg8-300.cxo.storage.hpecorp.net:3000"
-GRAFANA_TOKEN="glsa_ghRR5ijBXGdiPlz5dNkhDRz5yXi3BJ7r_512b85e5"
+GRAFANA_INFLUX_URL="http://localhost:8086"
+GRAFANA_HOST="http://localhost:3000"
+GRAFANA_TOKEN="<insert grafana token>"
 MAX_PARALLEL=17  # max concurrent .db file jobs
+
+# Path to the Go helper. Override here or via env if not on PATH.
+SQLITE_TO_LP="${SQLITE_TO_LP:-sqlite_to_lp}"
+
+# Verify the helper is available before doing anything else.
+if ! command -v "$SQLITE_TO_LP" >/dev/null 2>&1; then
+  echo "Error: '$SQLITE_TO_LP' not found on PATH." >&2
+  echo "Install the helper or set SQLITE_TO_LP to its absolute path." >&2
+  exit 1
+fi
 
 # Setup temp directory and guarantee cleanup on any exit
 WORK_DIR=$(mktemp -d)
@@ -100,28 +115,6 @@ else
 fi
 
 # ---------------------------------------------------------
-# HELPER: Tag Definitions
-# ---------------------------------------------------------
-get_tags_for_table() {
-  case $1 in
-    cpgspace)  echo "CPG_NAME,DOM_NAME,CPGID,DISK_TYPE" ;;
-    statcache) echo "node" ;;
-    statcmp)   echo "node" ;;
-    statcpu)   echo "NODE,CPU" ;;
-    statpd)    echo "PDID,DISK_TYPE,SPEED" ;;
-    statport)  echo "" ;;
-    statqos)   echo "DOM_NAME,QOS_ID" ;;
-    statrcopy) echo "TARGET_NAME,LINK_NAME" ;;
-    statrcvv)  echo "VV_NAME" ;;
-    statvlun)  echo "VV_NAME,LUN,HOST_NAME,HOST_WWN" ;;
-    statvv)    echo "VV_NAME,VVID,DOM_NAME,WWN,SNP_CPG_NAME,USR_CPG_NAME,PROV_TYPE,VV_TYPE,VVSET_NAME,VVSET_ID,CPGID" ;;
-    sysspace)  echo "DOM_NAME,DISK_TYPE" ;;
-    vvspace)   echo "VV_NAME,DOM_NAME,VVID,BSID,WWN,CPG_NAME,PROV_TYPE,VV_TYPE,VM_NAME,VM_ID,VM_HOST,VVOLSC,COMPR,VVSET_NAME,VVSET_ID,CPGID" ;;
-    *)         echo "" ;;
-  esac
-}
-
-# ---------------------------------------------------------
 # CORE FUNCTION: Process Single File
 # Each file gets its own chunk dir under WORK_DIR to avoid
 # collisions when files are processed in parallel.
@@ -137,95 +130,11 @@ process_sqlite_file() {
   echo "------------------------------------------------"
   echo "Processing: $db_file"
 
-  > "$output_file"
-
-  local tables
-  tables=$(sqlite3 "$db_file" "SELECT name FROM sqlite_master WHERE type='table';")
-
-  for table in $tables; do
-    local tag_cols
-    tag_cols=$(get_tags_for_table "$table")
-
-    sqlite3 -header -csv "$db_file" "SELECT * FROM $table;" | \
-    awk -F, -v measurement="$table" -v tags="$tag_cols" '
-    BEGIN {
-      split(tags, t_array, ",");
-      for (i in t_array) is_tag[t_array[i]] = 1;
-      idx_pn = 0; idx_ps = 0; idx_pp = 0;
-      idx_pt = 0; idx_gb = 0; idx_tt = 0;
-      whitelist_str = "begin_msec,now_msec,rerror,rdrops,rticks,werror,wdrops,wticks,GBITPS"
-      split(whitelist_str, wl_array, ",");
-      for (i in wl_array) keep_zeros[wl_array[i]] = 1;
-    }
-    NR==1 {
-      for (i=1; i<=NF; i++) {
-        gsub(/^"|"$/, "", $i);
-        col_name[i] = $i;
-        if (tolower($i) == "tsecs") time_col = i;
-        if ($i == "PORT_N")    idx_pn = i;
-        if ($i == "PORT_S")    idx_ps = i;
-        if ($i == "PORT_P")    idx_pp = i;
-        if ($i == "PORT_TYPE") idx_pt = i;
-        if ($i == "TRANS_TYPE") idx_tt = i;
-        if ($i == "GBITPS")    idx_gb = i;
-      }
-      next;
-    }
-    {
-      for (i=1; i<=NF; i++) gsub(/^"|"$/, "", $i);
-
-      tag_string = ""
-      for (i=1; i<=NF; i++) {
-        if (col_name[i] in is_tag) {
-          val = $i
-          gsub(/ /, "\\ ", val);
-          gsub(/,/, "\\,", val);
-          tag_string = tag_string "," col_name[i] "=" val
-        }
-      }
-      if (idx_pn > 0 && idx_ps > 0 && idx_pp > 0)
-        tag_string = tag_string ",DATA_PORT=" $idx_pn ":" $idx_ps ":" $idx_pp
-      if (idx_pt > 0) { val = $idx_pt; gsub(/ /, "\\ ", val); tag_string = tag_string ",PORT_TYPE=" val }
-      if (idx_tt > 0) { val = $idx_tt; gsub(/ /, "\\ ", val); tag_string = tag_string ",TRANS_TYPE=" val }
-      if (idx_gb > 0) { tag_string = tag_string ",GBITPS=" $idx_gb }
-
-      timestamp = (time_col) ? $time_col : "";
-
-      for (i=1; i<=NF; i++) {
-        header = col_name[i];
-        value = $i;
-        if (i == time_col || header in is_tag) continue;
-        if (i == idx_pn || i == idx_ps || i == idx_pp) continue;
-        if (i == idx_pt || i == idx_gb || i == idx_tt) continue;
-        if (value == "" || value == "-") continue;
-        if ((value == "0" || value == "0.0") && !(header in keep_zeros)) continue;
-
-        key = timestamp SUBSEP tag_string SUBSEP header
-        if (value ~ /^[+-]?[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?$/) {
-          agg_val[key] += value
-          agg_type[key] = "value"
-        } else {
-          gsub(/"/, "\\\"", value);
-          agg_val[key] = "\"" value "\""
-          agg_type[key] = "value_str"
-        }
-      }
-    }
-    END {
-      for (key in agg_val) {
-        split(key, parts, SUBSEP)
-        ts  = parts[1]
-        tgs = parts[2]
-        fld = parts[3]
-        val = agg_val[key]
-        f_key = agg_type[key]
-        if (ts != "")
-          printf "%s%s,type=%s %s=%s %s\n", measurement, tgs, fld, f_key, val, ts
-        else
-          printf "%s%s,type=%s %s=%s\n", measurement, tgs, fld, f_key, val
-      }
-    }' >> "$output_file"
-  done
+  # Transform sqlite -> InfluxDB line protocol in one go.
+  if ! "$SQLITE_TO_LP" "$db_file" "$output_file"; then
+    echo "  Error: sqlite_to_lp failed for $db_file" >&2
+    return 1
+  fi
 
   if [[ ! -s "$output_file" ]]; then
     echo "  Warning: No data extracted from $db_file"
